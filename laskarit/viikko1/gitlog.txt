@@ -1,0 +1,111 @@
+
+ommit a366353c24ab93f789f0dbb4767b439e9468ad48
+Author: toppyy 
+Date:   Tue Oct 27 18:32:05 2020 +0200
+
+    harjoittelua
+
+ tiedostoja/file2             | 0
+ tiedostoja/{file1 => file22} | 0
+ 2 files changed, 0 insertions(+), 0 deletions(-)
+
+commit ab1dbd8ae40b7724b1a383098372c41b0d16fc89
+Author: toppyy 
+Date:   Tue Oct 27 18:27:49 2020 +0200
+
+    files n stuff
+
+ tiedostoja/file1 | 0
+ tiedostoja/file2 | 0
+ tiedostoja/file3 | 0
+ 3 files changed, 0 insertions(+), 0 deletions(-)
+
+commit c088b5d782ada58983ce89cc87bff455c15b3f0a
+Author: toppyy 
+Date:   Tue Oct 27 18:25:54 2020 +0200
+
+    more changes again
+
+ eka.txt    | 2 +-
+ kolmas.txt | 2 +-
+ 2 files changed, 2 insertions(+), 2 deletions(-)
+
+commit 8a8195349f7543dfa87778421c9f756deba583c5
+Author: toppyy 
+Date:   Tue Oct 27 18:24:28 2020 +0200
+
+    renaming stuff
+
+ tiedosto.txt => eka.txt | 0
+ 1 file changed, 0 insertions(+), 0 deletions(-)
+
+commit 91cb9be59b47bb0347a1b36bfbe4095cfad511fc
+Author: toppyy 
+Date:   Tue Oct 27 18:23:49 2020 +0200
+
+    poistettu
+
+ toinen.txt | 1 -
+ 1 file changed, 1 deletion(-)
+
+commit c7c918d0f2ac4353a8fe4f703bbcac91d22c2f75
+Author: toppyy 
+Date:   Tue Oct 27 18:22:49 2020 +0200
+
+    moar bacon
+
+ tiedosto.txt | 4 +++-
+ 1 file changed, 3 insertions(+), 1 deletion(-)
+
+commit eb084365501d6ac58ecef57656a585a96cc510d7
+Author: toppyy 
+Date:   Tue Oct 27 18:21:54 2020 +0200
+
+    pekonia
+
+ tiedosto.txt | 11 ++++++++++-
+ 1 file changed, 10 insertions(+), 1 deletion(-)
+
+commit 5931935b7c840991c8ee67c6a4b2d9281a5e46fe
+Author: toppyy 
+Date:   Tue Oct 27 18:19:42 2020 +0200
+
+    tavaraa
+
+ stuff/tiedosto.txt | 0
+ 1 file changed, 0 insertions(+), 0 deletions(-)
+
+commit 3b2ca9d7440ba871a8de428f33782062d7656c5e
+Author: toppyy 
+Date:   Tue Oct 27 18:19:08 2020 +0200
+
+    muutokset
+
+ kolmas.txt | 1 +
+ toinen.txt | 1 +
+ 2 files changed, 2 insertions(+)
+
+commit 8ab8e3e1a4b1cc39f96849754beb0f7ad38d9a74
+Author: toppyy 
+Date:   Tue Oct 27 18:17:22 2020 +0200
+
+    lisää
+
+ kolmas.txt | 0
+ 1 file changed, 0 insertions(+), 0 deletions(-)
+
+commit 7c692613682ff9548ff1b0912d1e6b7e9842f560
+Author: toppyy 
+Date:   Tue Oct 27 18:15:17 2020 +0200
+
+    muutos lisäys
+
+ tiedosto.txt | 1 +
+ toinen.txt   | 0
+ 2 files changed, 1 insertion(+)
+
+commit d9408880b51269dc8783abbc5c67438b7d840fbf
+Author: toppyy 
+Date:   Tue Oct 27 18:14:08 2020 +0200
+
+    luotu tiedosto.txt
