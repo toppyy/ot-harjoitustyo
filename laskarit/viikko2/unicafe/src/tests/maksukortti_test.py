@@ -35,3 +35,8 @@ class TestMaksukortti(unittest.TestCase):
 
         totuusarvo = self.maksukortti.ota_rahaa(10)
         self.assertFalse(totuusarvo)
+
+    def test_printtaus_kertoo_oikean_saldon(self):
+
+        printti = str(self.maksukortti)
+        self.assertEqual(printti,"saldo: 0.1")
