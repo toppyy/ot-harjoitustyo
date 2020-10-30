@@ -107,6 +107,8 @@ class TestiKassapaate(unittest.TestCase):
         lisays = 123
 
         self.kassapaate.lataa_rahaa_kortille(kortti,lisays)
+        self.assertEqual( rahaa_alussa + lisays , self.kassapaate.kassassa_rahaa )
 
+        self.kassapaate.lataa_rahaa_kortille(kortti,-1)
         self.assertEqual( rahaa_alussa + lisays , self.kassapaate.kassassa_rahaa )
 
