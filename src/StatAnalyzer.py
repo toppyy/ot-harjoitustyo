@@ -16,8 +16,11 @@ class StatAnalyzer:
 
 
         # Functions that dont require a column
-        if function == "head":
+        if function == 'head':
             return self.head(column)
+
+        if function == 'help':
+            return self.help()
 
         if not column in self.dataset:
             print('Column not in dataset.')
@@ -78,4 +81,9 @@ class StatAnalyzer:
         return( min( self.dataset[column] ) )
 
 
-    
+    def help(self):
+        helpstr = "List of available commands:"
+
+        helpstr = helpstr +  '\n -'.join(['','mean','median','min','max','head','help'])
+        
+        return helpstr
