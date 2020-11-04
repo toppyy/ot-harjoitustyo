@@ -1,4 +1,4 @@
-
+import re
 
 class StatAnalyzer:
 
@@ -13,6 +13,11 @@ class StatAnalyzer:
 
         function = functioncall[0]
         column   = functioncall[1]
+
+
+        # Functions that dont require a column
+        if function == "head":
+            return self.head(column)
 
         if not column in self.dataset:
             print('Column not in dataset.')
@@ -30,8 +35,26 @@ class StatAnalyzer:
         if function == "min":
             return self.min(column)
 
-    def headers(self):
-        print(self.dataset)
+        
+
+    def head(self,obs=''):
+
+        if obs != None and  re.match('[^0-9]',obs)  == None:
+            obs = int(obs)
+        else:
+            obs = 5
+
+        headerset = self.dataset.copy()
+
+        for key in headerset:
+
+            if len( headerset[key]) < obs:
+                obs = len( headerset[key] )-1
+            
+            headerset[key] = headerset[key][0:obs]
+
+
+        return headerset
 
 
     def mean(self,column):

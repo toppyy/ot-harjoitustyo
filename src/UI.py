@@ -17,7 +17,7 @@ class UI:
                 break
             
             # Finds function call and parameter
-            pattern = '([a-z]+)\(([^\)]+)\)'
+            pattern = '([a-z]+)\(([^\)]+)?\)'
 
             functionMatch = re.match(pattern,commandinput, re.IGNORECASE)
 
