@@ -1,9 +1,10 @@
-from RegexTester    import RegexTester
+from StatAnalyzer   import StatAnalyzer
 from UI             import UI
 
 
-tester = UI(RegexTester())
+
+TSS = UI( StatAnalyzer() )
 
 
-tester.start()
+TSS.start()
 
