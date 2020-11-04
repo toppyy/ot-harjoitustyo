@@ -27,13 +27,7 @@ class UI:
 
             function = functionMatch.groups()
 
-            if function[0] == "test":
-                self.StatAnalyzer.setNumber(function[1])
-
-            if function[0] == "p":
-                self.StatAnalyzer.printNumber()
-
-            if function[0] == "r":
+            if function[0] == "readCSV":
                 data = self.readCSV(function[1])
                 self.StatAnalyzer.setDataset( data )
 
