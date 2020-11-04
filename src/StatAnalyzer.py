@@ -3,23 +3,31 @@
 class StatAnalyzer:
 
 
-    #def __init__(self,dataset):
-    #   self.dataset = dataset
-
+    def __init__(self,dataset=None):
+        self.dataset = dataset
+   
     def setDataset(self,dataset):
         self.dataset = dataset
-        print("Dataset set.")
-        return
-
+        
     def call(self,functioncall):
 
         function = functioncall[0]
         column   = functioncall[1]
 
+        if not column in self.dataset:
+            print('Column not in dataset.')
+            return ''
+
         if function == "mean":
             return self.mean(column)
 
         if function == "median":
+            return self.median(column)
+
+        if function == "max":
+            return self.median(column)
+
+        if function == "max":
             return self.median(column)
 
     def headers(self):

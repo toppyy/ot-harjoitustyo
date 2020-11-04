@@ -16,13 +16,26 @@ class UI:
             if commandinput == '':
                 break
             
+            # Finds function call and parameter
             pattern = '([a-z]+)\(([^\)]+)\)'
 
-            function = re.match(pattern,commandinput, re.IGNORECASE).groups()
+            functionMatch = re.match(pattern,commandinput, re.IGNORECASE)
 
+            if functionMatch == None:
+                print("Invalid command")
+                continue
+
+            function = functionMatch.groups()
+
+            if function[0] == "test":
+                self.StatAnalyzer.setNumber(function[1])
+
+            if function[0] == "p":
+                self.StatAnalyzer.printNumber()
 
             if function[0] == "r":
-                self.StatAnalyzer.setDataset( self.readCSV(function[1]) )
+                data = self.readCSV(function[1])
+                self.StatAnalyzer.setDataset( data )
 
             else:
                 print( self.StatAnalyzer.call(function) )
@@ -30,6 +43,6 @@ class UI:
 
 
     def readCSV(self,path,delimiter=";",quote='"',header=True):
-        self.FAO.readCSV(path,delimiter,quote,header)
+        return self.FAO.readCSV(path,delimiter,quote,header)
 
             
