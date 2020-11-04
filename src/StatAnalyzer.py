@@ -25,10 +25,10 @@ class StatAnalyzer:
             return self.median(column)
 
         if function == "max":
-            return self.median(column)
+            return self.max(column)
 
-        if function == "max":
-            return self.median(column)
+        if function == "min":
+            return self.min(column)
 
     def headers(self):
         print(self.dataset)
