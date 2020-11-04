@@ -3,10 +3,6 @@ import re
 
 class FileAccess:
 
-    #def __init__(self):
-    #    self.guessingrows = 5
-    #    return
-
     def guesstype(self,datapart):
 
         obs = datapart[0] # Guess from one obs
