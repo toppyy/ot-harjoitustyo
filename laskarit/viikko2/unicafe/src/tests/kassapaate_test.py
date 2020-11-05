@@ -4,7 +4,7 @@ import unittest
 from kassapaate import Kassapaate
 from maksukortti import Maksukortti
 
-class TestiKassapaate(unittest.TestCase):
+class TestKassapaate(unittest.TestCase):
     def setUp(self):
         self.kassapaate = Kassapaate()
 
