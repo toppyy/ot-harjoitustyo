@@ -6,6 +6,8 @@ verify_ssl = true
 [dev-packages]
 
 [packages]
+pytest = "*"
 
 [scripts]
 start = "python3 src/index.py"
+test  = "pytest"
