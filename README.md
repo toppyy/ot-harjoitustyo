@@ -2,6 +2,6 @@
 
 ## Documentation
 
-* [Requirements](https://raw.githubusercontent.com/toppyy/ot-harjoitustyo/master/documentation/Requirements.md)
-* [Timesheet](https://raw.githubusercontent.com/toppyy/ot-harjoitustyo/master/documentation/Timesheet.md)
+* [Requirements](https://github.com/toppyy/ot-harjoitustyo/blob/master/documentation/Requirements.md)
+* [Timesheet](https://github.com/toppyy/ot-harjoitustyo/blob/master/documentation/Timesheet.md)
 
