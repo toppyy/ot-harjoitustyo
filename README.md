@@ -1,10 +1,7 @@
-# Ohjelmistotuotantoprojektin harjoitustyö 
+# Statistical analysis application
 
-## Laskarit
+## Documentation
 
-### Viikko 1
-
-[gitlog.txt](https://raw.githubusercontent.com/toppyy/ot-harjoitustyo/master/laskarit/viikko1/gitlog.txt)
-
-[komentorivi.txt](https://github.com/toppyy/ot-harjoitustyo/blob/master/laskarit/viikko1/komentorivi.txt)
+* [Requirements](https://raw.githubusercontent.com/toppyy/ot-harjoitustyo/master/documentation/Requirements.md)
+* [Timesheet](https://raw.githubusercontent.com/toppyy/ot-harjoitustyo/master/documentation/Timesheet.md)
 
