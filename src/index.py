@@ -7,7 +7,7 @@ datareader = FileAccess()
 
 
 
-TSS = UI( StatAnalyzer( datareader.readCSV('./data/tyovoimakunnittain.csv',";",'"',True) ))
+TSS = UI( StatAnalyzer( datareader.read_csv('./data/tyovoimakunnittain.csv',";",'"',True) ))
 
 
 TSS.start()

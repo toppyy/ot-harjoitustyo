@@ -7,33 +7,33 @@ class FileAccess:
 
         obs = datapart[0] # Guess from one obs
 
-        if re.match('[^0-9.,]',obs) != None:
+        if re.match('[^0-9.,]',obs) is not None:
             return 'str'
 
-        if re.match('[^0-9]',obs)   != None:
+        if re.match('[^0-9]',obs)   is not None:
             return 'float'
 
-        if re.match('[0-9]+',obs)   != None:
+        if re.match('[0-9]+',obs)   is not None:
             return 'int'
 
         return 'str'
 
-    def convertTo(self,data,coltype):
+    def convert_to(self,data,coltype):
 
         if coltype=='int':
             return [int(obs) for obs in data]
-            
+
         if coltype=='float':
             return [float(obs) for obs in data]
 
         return data
 
-    def readCSV(self,path,delimiter,quote,header):
+    def read_csv(self,path,delimiter,quote,header):
 
         csvfile = open(path,'r',encoding='ISO-8859-1')
         try:
             reader = csv.reader(csvfile,delimiter=delimiter,quotechar=quote)
-            
+
             if header:
                 headers = reader.__next__()
 
@@ -42,29 +42,24 @@ class FileAccess:
             columnstore = [[] for header in headers ]
 
             for row in reader:
-                for c in range(0,headercount):
-                    columnstore[c].append(row[c])  
+                for column_idx in range(0,headercount):
+                    columnstore[column_idx].append(row[column_idx])
 
-        except Exception as e:
-            print('Problem reading the file:',e)
-            
+        except Exception as error:
+            print('Problem reading the file:',error)
+
         dataset = {}
 
-        for c in range(0,len(columnstore)):
+        for column_idx in range(0,len(columnstore)):
 
-            column = columnstore[c]
+            column = columnstore[column_idx]
 
             guessingrows = 5
             if guessingrows > len(column)-1:
                 guessingrows = len(column)-1
 
-            coltype = self.guesstype(column[0:guessingrows]) 
-        
-            dataset[headers[c]] = self.convertTo(column,coltype)
-        
+            coltype = self.guesstype(column[0:guessingrows])
+
+            dataset[headers[column_idx]] = self.convert_to(column,coltype)
+
         return dataset
-
-            
- 
-
-        
