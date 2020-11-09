@@ -1,19 +1,18 @@
 import re
 
+
 class StatAnalyzer:
 
+    def __init__(self, dataset=None):
+        self.dataset = dataset
 
-    def __init__(self,dataset=None):
+    def setDataset(self, dataset):
         self.dataset = dataset
-   
-    def setDataset(self,dataset):
-        self.dataset = dataset
-        
-    def call(self,functioncall):
+
+    def call(self, functioncall):
 
         function = functioncall[0]
-        column   = functioncall[1]
-
+        column = functioncall[1]
 
         # Functions that dont require a column
         if function == 'head':
@@ -38,11 +37,9 @@ class StatAnalyzer:
         if function == "min":
             return self.min(column)
 
-        
+    def head(self, obs=''):
 
-    def head(self,obs=''):
-
-        if obs != None and  re.match('[^0-9]',obs)  == None:
+        if obs != None and re.match('[^0-9]', obs) == None:
             obs = int(obs)
         else:
             obs = 5
@@ -51,39 +48,36 @@ class StatAnalyzer:
 
         for key in headerset:
 
-            if len( headerset[key]) < obs:
-                obs = len( headerset[key] )-1
-            
-            headerset[key] = headerset[key][0:obs]
+            if len(headerset[key]) < obs:
+                obs = len(headerset[key])-1
 
+            headerset[key] = headerset[key][0:obs]
 
         return headerset
 
-
-    def mean(self,column):
+    def mean(self, column):
         d = self.dataset[column]
-        return sum(d)/len(d) 
+        return sum(d)/len(d)
 
-
-    def median(self,column):
+    def median(self, column):
 
         d = self.dataset[column]
         d = sorted(d)
 
         midpoint = len(d) // 2
-        
+
         return d[midpoint]
 
-    def max(self,column):
-        return( max( self.dataset[column] ) )
+    def max(self, column):
+        return(max(self.dataset[column]))
 
-    def min(self,column):
-        return( min( self.dataset[column] ) )
-
+    def min(self, column):
+        return(min(self.dataset[column]))
 
     def help(self):
         helpstr = "List of available commands:"
 
-        helpstr = helpstr +  '\n -'.join(['','mean','median','min','max','head','help'])
-        
+        helpstr = helpstr + \
+            '\n -'.join(['', 'mean', 'median', 'min', 'max', 'head', 'help'])
+
         return helpstr
