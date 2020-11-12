@@ -29,31 +29,31 @@ class FileAccess:
 
         return data
 
-    def read_csv(self, path, delimiter, quote, header):
+    def read_csv(self, path, delimiter, quote, has_header):
 
         csvfile = open(path, 'r', encoding='ISO-8859-1')
+
         try:
             reader = csv.reader(csvfile, delimiter=delimiter, quotechar=quote)
 
-            if header:
+            if has_header:
                 headers = reader.__next__()
-
-            headercount = len(headers)
+            #else:
+                # Read first line to get number of columns
+            #    headers = 
 
             columnstore = [[] for header in headers]
 
             for row in reader:
-                for column_idx in range(0, headercount):
+                for column_idx,header in enumerate(headers):
                     columnstore[column_idx].append(row[column_idx])
 
-        except Exception as error:
-            print('Problem reading the file:', error)
+        except FileExistsError:
+            print('File does not exist')
 
         dataset = {}
 
-        for column_idx in range(0, len(columnstore)):
-
-            column = columnstore[column_idx]
+        for column_idx,column in enumerate(columnstore): #range(0, len(columnstore)):
 
             guessingrows = 5
             if guessingrows > len(column)-1:

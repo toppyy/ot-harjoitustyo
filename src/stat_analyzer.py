@@ -6,7 +6,7 @@ class StatAnalyzer:
     def __init__(self, dataset=None):
         self.dataset = dataset
 
-    def setDataset(self, dataset):
+    def set_dataset(self, dataset):
         self.dataset = dataset
 
     def call(self, functioncall):
@@ -39,7 +39,7 @@ class StatAnalyzer:
 
     def head(self, obs=''):
 
-        if obs != None and re.match('[^0-9]', obs) == None:
+        if obs is not None and re.match('[^0-9]', obs) is None:
             obs = int(obs)
         else:
             obs = 5
@@ -56,23 +56,23 @@ class StatAnalyzer:
         return headerset
 
     def mean(self, column):
-        d = self.dataset[column]
-        return sum(d)/len(d)
+        data = self.dataset[column]
+        return sum(data)/len(data)
 
     def median(self, column):
 
-        d = self.dataset[column]
-        d = sorted(d)
+        data = self.dataset[column]
+        data = sorted(data)
 
-        midpoint = len(d) // 2
+        midpoint = len(data) // 2
 
-        return d[midpoint]
+        return data[midpoint]
 
     def max(self, column):
-        return(max(self.dataset[column]))
+        return max(self.dataset[column])
 
     def min(self, column):
-        return(min(self.dataset[column]))
+        return min(self.dataset[column])
 
     def help(self):
         helpstr = "List of available commands:"

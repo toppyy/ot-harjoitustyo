@@ -1,12 +1,12 @@
 import re
-from FileAccess import FileAccess
+from file_access import FileAccess
 
 
 class UI:
 
     def __init__(self, StatAnalyzer):
-        self.StatAnalyzer = StatAnalyzer
-        self.FAO = FileAccess()
+        self.stat_analyzer = StatAnalyzer
+        self.file_access_object = FileAccess()
 
     def start(self):
 
@@ -19,22 +19,23 @@ class UI:
                 break
 
             # Finds function call and parameter
-            pattern = '([a-z]+)\(([^\)]+)?\)'
+            pattern = r'([a-z]+)\(([^\)]+)?\)'
 
-            functionMatch = re.match(pattern, commandinput, re.IGNORECASE)
+            function_call = re.match(pattern, commandinput, re.IGNORECASE)
 
-            if functionMatch == None:
+            if function_call is None:
                 print("Invalid command")
                 continue
 
-            function = functionMatch.groups()
+            function = function_call.groups()
 
             if function[0] == "readCSV":
-                data = self.readCSV(function[1])
-                self.StatAnalyzer.setDataset(data)
+                data = self.read_csv(function[1])
+                self.stat_analyzer.set_dataset(data)
 
             else:
-                print(self.StatAnalyzer.call(function))
+                print(self.stat_analyzer.call(function))
 
-    def readCSV(self, path, delimiter=";", quote='"', header=True):
-        return self.FAO.readCSV(path, delimiter, quote, header)
+    def read_csv(self, path, delimiter=";", quote='"', header=True):
+
+        return self.file_access_object.read_csv(path, delimiter, quote, header)

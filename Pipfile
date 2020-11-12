@@ -3,14 +3,18 @@ name = "pypi"
 url = "https://pypi.org/simple"
 verify_ssl = true
 
+[scripts]
+start = "python3 src/index.py"
+test  = "pytest --ignore=laskarit"
+lint  = "pylint src"
+coverage = "coverage run --branch -m --source src pytest --ignore=laskarit"
+coverage-report = "coverage html"
+
+
 [dev-packages]
 
 [packages]
 pytest = "*"
 pylint = "*"
 autopep8 = "*"
-
-[scripts]
-start = "python3 src/index.py"
-test  = "pytest"
-lint  = "pylint src"
+coverage = "*"
