@@ -1,0 +1,5 @@
+[Pelinappula]1-1[Pelaaja]
+[Pelilauta]1-*[Ruutu]
+[Noppa]2-1[Pelilauta]
+[Ruutu]1-*[Pelinappula]
+[Ruutu]1-1[Ruutu]
