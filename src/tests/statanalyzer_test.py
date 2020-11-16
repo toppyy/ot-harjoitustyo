@@ -13,3 +13,6 @@ class TestStatAnalyzer(unittest.TestCase):
 
     def test_mean(self):
         self.assertEqual(self.stat_analyzer.mean("column"), 54.67)
+
+    def test_max(self):
+        self.assertEqual(self.stat_analyzer.max("column"), 90.7)

@@ -10,7 +10,6 @@ lint  = "pylint src"
 coverage = "coverage run --branch -m --source src pytest --ignore=laskarit"
 coverage-report = "coverage html"
 
-
 [dev-packages]
 
 [packages]
@@ -18,3 +17,4 @@ pytest = "*"
 pylint = "*"
 autopep8 = "*"
 coverage = "*"
+kivy = "*"

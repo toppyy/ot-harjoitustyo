@@ -15,7 +15,7 @@ class UI:
             commandinput = input(
                 "Enter function and column (eg. mean(tyovoima)): ")
 
-            if commandinput == '':
+            if commandinput == '' or commandinput == 'exit':
                 break
 
             # Finds function call and parameter
