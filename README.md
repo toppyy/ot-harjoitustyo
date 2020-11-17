@@ -32,3 +32,8 @@ To create coverage-report. Gather coverage data and create the report by:
 python3 -m pipenv run coverage && python3 -m pipenv run coverage-report
 ```
 And you'll find the report in /htmlcov
+
+To run the linter:
+```bash
+python3 -m pipenv run lint
+```
