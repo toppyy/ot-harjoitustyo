@@ -20,3 +20,15 @@ python3 -m pipenv install
 python3 -m pipenv run start
 ```
 At the moment the application starts with the example data loaded for analysis. To analyse a different dataset, manipulate the index.py-file.
+
+## Tests and linting
+
+To run tests
+```bash
+python3 -m pipenv run test
+```
+To create coverage-report. Gather coverage data and create the report by:
+```bash
+python3 -m pipenv run coverage && python3 -m pipenv run coverage-report
+```
+And you'll find the report in /htmlcov
