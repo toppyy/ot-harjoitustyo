@@ -1,0 +1,3 @@
+[Dataset]1-1[StatAnalyzer]
+[StatAnalyzer]1-1[GUI]
+[StatAnalyzer]1-0..*[Analysis]
