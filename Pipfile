@@ -5,6 +5,7 @@ verify_ssl = true
 
 [scripts]
 start = "python3 src/index.py"
+dev   = "python3 src/index.py dev"
 test  = "pytest --ignore=laskarit"
 lint  = "pylint src"
 coverage = "coverage run --branch -m --source src pytest --ignore=laskarit"
