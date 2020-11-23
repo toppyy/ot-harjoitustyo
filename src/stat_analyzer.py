@@ -1,4 +1,3 @@
-import re
 from analyses.summary import summary
 from analyses.frequencytable import frequencytable
 
@@ -32,4 +31,4 @@ class StatAnalyzer:
         return self.dataset.get_nonnumeric_column_names()
 
     def has_dataset(self):
-        return self.dataset != None
+        return self.dataset is not None

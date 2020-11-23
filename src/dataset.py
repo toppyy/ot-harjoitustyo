@@ -20,7 +20,7 @@ class Dataset:
         columnstore = [[] for header in self.column_names]
 
         for row in self.rows:
-            for column_idx, header in enumerate(self.column_names):
+            for column_idx in range(0,len(self.column_names)):
                 columnstore[column_idx].append(row[column_idx])
 
         self.dataset = {}
@@ -47,7 +47,8 @@ class Dataset:
         return self.column_types
 
     def get_numeric_column_names(self):
-        return [colname for idx, colname in enumerate(self.column_names) if self.column_types[idx] != 'str']
+        colnames = self.column_names
+        return [name for idx, name in enumerate(colnames) if self.column_types[idx] != 'str']
 
     def get_nonnumeric_column_names(self):
         numeric_cols = self.get_numeric_column_names()

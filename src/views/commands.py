@@ -1,4 +1,4 @@
-from tkinter import ttk, constants
+from tkinter import ttk
 
 
 class Commands:
