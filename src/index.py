@@ -10,8 +10,14 @@ from views.output import Output
 
 arguments = sys.argv
 
-data = Dataset( FileAccess().read_csv('./data/tyovoimakunnittain.csv', ";", '"') )
-data.create()
+data = None
+
+# If running with argument "dev". Load example data
+if len(arguments)>1 and arguments[1] == 'dev':
+    data = Dataset( FileAccess().read_csv('./data/tyovoimakunnittain.csv', ";", '"') )
+    data.create()
+
+
 stat_analyzer = StatAnalyzer(data)
 
 window = Tk()
