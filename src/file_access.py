@@ -12,7 +12,11 @@ class FileAccess:
         try:
             reader = csv.reader(csvfile, delimiter=delimiter, quotechar=quote)
 
-            return reader
+            rows = []
+            for row in reader:
+                rows.append(row)
+
+            return rows
 
         except FileExistsError:
             print('File does not exist')

@@ -3,8 +3,8 @@ from misc.guess_datatype import guesstype
 
 
 class Dataset:
-    def __init__(self,reader):
-        self.reader = reader
+    def __init__(self,rows):
+        self.rows = rows
         self.dataset  = None
         self.columnstore = {}
         self.column_names = None
@@ -13,15 +13,15 @@ class Dataset:
     def create(self,has_header=True):
 
 
+        headers = [ 'col'+str(idx) for idx in range(0,len(self.rows[0])) ]
         if has_header:
-            headers = self.reader.__next__()
-
+            headers = self.rows.pop(0)
             self.column_names = headers
             
 
         columnstore = [[] for header in headers]
 
-        for row in self.reader:
+        for row in self.rows:
             for column_idx,header in enumerate(headers):
                 columnstore[column_idx].append(row[column_idx])
 
