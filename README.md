@@ -6,6 +6,7 @@ The application provides an access to simple statistical analysis for text files
 
 * [Requirements](https://github.com/toppyy/ot-harjoitustyo/blob/master/documentation/Requirements.md)
 * [Timesheet](https://github.com/toppyy/ot-harjoitustyo/blob/master/documentation/Timesheet.md)
+* [Architecture](https://github.com/toppyy/ot-harjoitustyo/blob/master/documentation/Architecture.md)
 
 ## Setup and running the application
 
@@ -19,7 +20,9 @@ python3 -m pipenv install
 ```bash
 python3 -m pipenv run start
 ```
-At the moment the application starts with the example data loaded for analysis. To analyse a different dataset, manipulate the index.py-file.
+At the moment it's only possible to analyze an example dataset. To analyse a different dataset, manipulate the index.py-file. 
+
+Alternatively you can run `python3 -m pipenv run dev` which loads the example data on start-up.
 
 ## Tests and linting
 

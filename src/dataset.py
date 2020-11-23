@@ -3,30 +3,29 @@ from misc.guess_datatype import guesstype
 
 
 class Dataset:
-    def __init__(self,rows):
+    def __init__(self, rows):
         self.rows = rows
-        self.dataset  = None
+        self.dataset = None
         self.columnstore = {}
         self.column_names = None
         self.column_types = []
 
-    def create(self,has_header=True):
+    def create(self, has_header=True):
 
-        self.column_names = [ 'col'+str(idx) for idx in range(0,len(self.rows[0])) ]
+        self.column_names = ['col'+str(idx)
+                             for idx in range(0, len(self.rows[0]))]
         if has_header:
             self.column_names = self.rows.pop(0)
-            
 
         columnstore = [[] for header in self.column_names]
 
         for row in self.rows:
-            for column_idx,header in enumerate(self.column_names):
+            for column_idx, header in enumerate(self.column_names):
                 columnstore[column_idx].append(row[column_idx])
-
 
         self.dataset = {}
 
-        for column_idx,column in enumerate(columnstore):
+        for column_idx, column in enumerate(columnstore):
 
             guessingrows = 5
             if guessingrows > len(column)-1:
@@ -35,17 +34,20 @@ class Dataset:
             coltype = guesstype(column[0:guessingrows])
             self.column_types.append(coltype)
 
-            self.dataset[self.column_names[column_idx]] = convert_to(column, coltype)
+            self.dataset[self.column_names[column_idx]
+                         ] = convert_to(column, coltype)
 
-        
-    def get_column(self,column_name):
+    def get_column(self, column_name):
         return self.dataset[column_name]
 
     def get_column_names(self):
         return self.column_names
 
+    def get_column_types(self):
+        return self.column_types
+
     def get_numeric_column_names(self):
-        return [colname for idx,colname in enumerate(self.column_names) if self.column_types[idx] != 'str' ]
+        return [colname for idx, colname in enumerate(self.column_names) if self.column_types[idx] != 'str']
 
     def get_nonnumeric_column_names(self):
         numeric_cols = self.get_numeric_column_names()

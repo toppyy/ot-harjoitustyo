@@ -4,7 +4,6 @@ import re
 
 class FileAccess:
 
-
     def read_csv(self, path, delimiter, quote):
 
         csvfile = open(path, 'r', encoding='ISO-8859-1')
@@ -20,4 +19,3 @@ class FileAccess:
 
         except FileExistsError:
             print('File does not exist')
-

@@ -7,8 +7,7 @@ class TestGuesstype(unittest.TestCase):
     def setUp(self):
         pass
 
-
     def test_guesstype(self):
-        self.assertEqual( guesstype(['10.7']) , 'float' )
-        self.assertEqual( guesstype(['107a']) , 'str' )
-        self.assertEqual( guesstype(['1099128']) , 'int' )
+        self.assertEqual(guesstype(['10.7']), 'float')
+        self.assertEqual(guesstype(['107a']), 'str')
+        self.assertEqual(guesstype(['1099128']), 'int')

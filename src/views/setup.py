@@ -5,7 +5,7 @@ from views.output import Output
 
 class Setup:
 
-    def __init__(self,stat_analyzer):
+    def __init__(self, stat_analyzer):
         self.frame = None
         self.initialize()
         self.stat_analyzer = stat_analyzer
@@ -15,16 +15,15 @@ class Setup:
 
         window = Tk()
         window.title("Analysis setup")
-        
-        self.frame = ttk.Frame( master=window)
-    
 
-    def display_result(self,result):
+        self.frame = ttk.Frame(master=window)
+
+    def display_result(self, result):
         Output(result).pack()
 
     def destroy(self):
         self.frame.destroy()
-    
+
     def pack(self):
         self.frame.pack()
 

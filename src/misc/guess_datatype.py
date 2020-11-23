@@ -1,5 +1,6 @@
 import re
 
+
 def guesstype(datapart,):
 
     obs = datapart[0]  # Guess from one obs

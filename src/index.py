@@ -12,10 +12,8 @@ arguments = sys.argv
 data = None
 
 # If running with argument "dev". Load example data
-if len(arguments)>1 and arguments[1] == 'dev':
+if len(arguments) > 1 and arguments[1] == 'dev':
     data = load_exampledata()
-    #data = Dataset( FileAccess().read_csv('./data/tyovoimakunnittain.csv', ";", '"') )
-    #data.create()
 
 
 stat_analyzer = StatAnalyzer(data)
@@ -23,7 +21,7 @@ stat_analyzer = StatAnalyzer(data)
 window = Tk()
 window.title("Stat analyzer")
 
-ui = GUI(window,stat_analyzer)
+ui = GUI(window, stat_analyzer)
 ui.start()
 
 window.mainloop()
