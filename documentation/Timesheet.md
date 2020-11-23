@@ -1,7 +1,7 @@
 
 # Timesheet
 
-Total hours spent **7**
+Total hours spent **13**
 
 | date | hours spent | doing what  |
 | :----:|:-----| :-----|
@@ -11,3 +11,5 @@ Total hours spent **7**
 | 9.11  | 1    | linter |
 | 12.11 | 2    | test-coverage |
 | 16.11 | 0.5  | minor fixes |
+| 22.11 | 4    | GUI implementation |
+| 23.11 | 2    | GUI-views, freq.tables |
