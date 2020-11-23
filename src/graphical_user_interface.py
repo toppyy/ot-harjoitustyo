@@ -8,7 +8,7 @@ class GUI:
         self.stat_analyzer = StatAnalyzer
 
     def start(self):
-        view = Commands(self.root, self.do_command)
+        view = Commands(self.root, self.do_command, self.stat_analyzer.get_available_commands())
         view.pack()
 
     def do_command(self, analysis_name):
