@@ -25,3 +25,7 @@ class StatAnalyzer:
 
     def get_nonnumeric_column_names(self):
         return self.dataset.get_nonnumeric_column_names()
+
+
+    def has_dataset(self):
+        return self.dataset != None
