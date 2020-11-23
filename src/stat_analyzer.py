@@ -16,7 +16,12 @@ class StatAnalyzer:
         data = self.dataset.get_column(column)
         return summary(data)
 
-
-
     def get_column_names(self):
         return self.dataset.get_column_names()
+
+    def get_numeric_column_names(self):
+        return self.dataset.get_numeric_column_names()
+
+
+    def get_nonnumeric_column_names(self):
+        return self.dataset.get_nonnumeric_column_names()

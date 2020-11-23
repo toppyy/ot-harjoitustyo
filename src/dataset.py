@@ -8,6 +8,7 @@ class Dataset:
         self.dataset  = None
         self.columnstore = {}
         self.column_names = None
+        self.column_types = []
 
     def create(self,has_header=True):
 
@@ -34,6 +35,7 @@ class Dataset:
                 guessingrows = len(column)-1
 
             coltype = guesstype(column[0:guessingrows])
+            self.column_types.append(coltype)
 
             self.dataset[headers[column_idx]] = convert_to(column, coltype)
 
@@ -44,3 +46,9 @@ class Dataset:
     def get_column_names(self):
         return self.column_names
 
+    def get_numeric_column_names(self):
+        return [colname for idx,colname in enumerate(self.column_names) if self.column_types[idx] != 'str' ]
+
+    def get_nonnumeric_column_names(self):
+        numeric_cols = self.get_numeric_column_names()
+        return [colname for colname in self.column_names if colname not in numeric_cols]
