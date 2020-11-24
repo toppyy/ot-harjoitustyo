@@ -29,3 +29,6 @@ class Setup:
 
     def do_setup(self):
         pass
+
+    def analyze(self):
+        pass
