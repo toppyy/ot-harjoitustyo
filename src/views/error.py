@@ -11,9 +11,9 @@ class Error:
         window = Tk()
         window.title("Analysis setup")
 
-        self.frame = ttk.Frame(master=window)
+        frame = ttk.Frame(master=window)
 
-        label = ttk.Label(master=self.frame, text=self.error_msg)
+        label = ttk.Label(master=frame, text=self.error_msg)
         label.grid(row=0, column=0)
 
-        self.frame.pack()
+        frame.pack()

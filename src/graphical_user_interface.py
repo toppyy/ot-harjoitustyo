@@ -1,11 +1,11 @@
-from misc.init_setup import init_setup
 from tkinter import ttk
+from misc.init_setup import init_setup
+
 class GUI:
 
     def __init__(self, root, StatAnalyzer):
         self.root = root
         self.stat_analyzer = StatAnalyzer
-        
 
     def start(self):
         frame = ttk.Frame(master=self.root)

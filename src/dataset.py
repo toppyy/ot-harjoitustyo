@@ -17,7 +17,7 @@ class Dataset:
                              for idx in range(0, len(self.rows[0]))]
         if has_header:
             column_names = self.rows.pop(0)
-        
+
         return column_names
 
     def create(self, has_header=True):
@@ -25,8 +25,8 @@ class Dataset:
         self.column_names = self.create_column_names(has_header)
 
         columnstore = [[] for header in self.column_names]
-        
-        # Data is as a set of columns instead of rows 
+
+        # Data is as a set of columns instead of rows
         for row in self.rows:
             for column_idx in range(0,len(self.column_names)):
                 columnstore[column_idx].append(row[column_idx])

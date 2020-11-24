@@ -30,5 +30,5 @@ class Setup:
     def do_setup(self):
         pass
 
-    def analyze(self):
+    def analyze(self, column_name):
         pass
