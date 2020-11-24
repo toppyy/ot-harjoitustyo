@@ -36,4 +36,3 @@ class StatAnalyzer:
 
     def get_available_commands(self):
         return ['Frequency table', 'Summary', 'Load example-data']
-

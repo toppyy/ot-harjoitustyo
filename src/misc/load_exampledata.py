@@ -4,8 +4,9 @@ from dataset import Dataset
 
 def load_exampledata():
 
-    data = Dataset(FileAccess().read_csv(
-        './data/sepelvaltimo_korvausoikeus.csv', ";", '"'))
+
+    path = './data/sepelvaltimo_korvausoikeus.csv'
+    data = Dataset(FileAccess().read_csv(path, ";", '"'))
     data.create()
 
     return data
