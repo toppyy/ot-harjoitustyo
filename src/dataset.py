@@ -10,32 +10,38 @@ class Dataset:
         self.column_names = None
         self.column_types = []
 
-    def create(self, has_header=True):
 
-        self.column_names = ['col'+str(idx)
+    def create_column_names(self,has_header):
+
+        column_names = ['col'+str(idx)
                              for idx in range(0, len(self.rows[0]))]
         if has_header:
-            self.column_names = self.rows.pop(0)
+            column_names = self.rows.pop(0)
+        
+        return column_names
+
+    def create(self, has_header=True):
+
+        self.column_names = self.create_column_names(has_header)
 
         columnstore = [[] for header in self.column_names]
-
+        
+        # Data is as a set of columns instead of rows 
         for row in self.rows:
             for column_idx in range(0,len(self.column_names)):
                 columnstore[column_idx].append(row[column_idx])
 
+        # Data is stored in a dict. The key is the column name
+        # Store into dict ja do relevant type conversions
         self.dataset = {}
 
-        for column_idx, column in enumerate(columnstore):
+        for col_idx, column in enumerate(columnstore):
 
             guessingrows = 5
-            if guessingrows > len(column)-1:
-                guessingrows = len(column)-1
-
             coltype = guesstype(column[0:guessingrows])
             self.column_types.append(coltype)
 
-            self.dataset[self.column_names[column_idx]
-                         ] = convert_to(column, coltype)
+            self.dataset[self.column_names[col_idx]] = convert_to(column, coltype)
 
     def get_column(self, column_name):
         return self.dataset[column_name]
