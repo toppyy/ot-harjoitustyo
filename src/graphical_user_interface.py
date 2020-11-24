@@ -1,5 +1,4 @@
 from misc.init_setup import init_setup
-from views.commands import Commands
 from tkinter import ttk
 class GUI:
 
