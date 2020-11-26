@@ -13,9 +13,10 @@ class Output:
         window.title("Analysis output")
 
         self.frame = ttk.Frame(master=window)
+
         for idx, element in enumerate(self.analysis):
-            tmp = element.get_output(self.frame)
-            tmp.grid(row=idx, column=0)
+            element.get_output(self.frame, idx)
+            
 
     def destroy(self):
         self.frame.destroy()

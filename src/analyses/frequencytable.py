@@ -1,4 +1,4 @@
-from gui.output_elements.text import Text
+from gui.output_elements.table import Table
 
 def frequencytable(data):
 
@@ -7,13 +7,12 @@ def frequencytable(data):
     for item in data:
         freqs[item] = freqs.get(item, 0) + 1
 
-    freq_list = []
+    freq_list = [['Value','Count']]
     for key, value in freqs.items():
-        temp = '{}: {}'.format(key, value)
-        freq_list.append(temp)
+        freq_list.append([key,value])
 
     results = [
-            Text( "Frequencies:\n" +  '\n'.join(freq_list) )
+            Table(freq_list)
     ]
 
     return results
