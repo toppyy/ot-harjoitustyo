@@ -1,5 +1,5 @@
 from tkinter import ttk
-from views.setup import Setup
+from gui.setup import Setup
 
 
 class Frequencytable(Setup):

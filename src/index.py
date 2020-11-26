@@ -3,7 +3,7 @@ import sys
 from tkinter import Tk
 
 from stat_analyzer import StatAnalyzer
-from views.gui import GUI
+from gui.gui import GUI
 from misc.load_exampledata import load_exampledata
 
 arguments = sys.argv

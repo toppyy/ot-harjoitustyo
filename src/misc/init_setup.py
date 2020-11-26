@@ -1,6 +1,6 @@
-from views.analysis.summary import Summary
-from views.analysis.frequency_table import Frequencytable
-from views.error import Error
+from gui.analysis.summary import Summary
+from gui.analysis.frequency_table import Frequencytable
+from gui.error import Error
 from misc.load_exampledata import load_exampledata
 
 

@@ -1,6 +1,6 @@
 from tkinter import ttk, Tk
 
-from views.output import Output
+from gui.output import Output
 
 
 class Setup:
