@@ -1,5 +1,6 @@
 from tkinter import ttk
 from tkinter import messagebox
+from tkinter import Menu
 
 from gui.analysis.summary           import Summary
 from gui.analysis.frequency_table   import Frequencytable
@@ -11,7 +12,7 @@ class GUI:
     def __init__(self, root, StatAnalyzer):
         self.root = root
         self.stat_analyzer = StatAnalyzer
-        self.available_commands = ['Frequency table', 'Summary', 'Load example-data']
+        self.available_commands = ['Frequency table', 'Summary']
 
     def start(self):
         frame = ttk.Frame(master=self.root)
@@ -24,16 +25,29 @@ class GUI:
 
         frame.pack()
 
+        # Menu
+        menu = Menu(self.root)
+        self.root.config(menu=menu)
+        filemenu = Menu(menu)
+        menu.add_cascade(label='File', menu=filemenu)
+        filemenu.add_command(label='Load exampledata', command=self.load_exampledata)
+        filemenu.add_command(label='Open...')
+        filemenu.add_separator()
+        filemenu.add_command(label='Exit', command=self.root.quit)
+
+    def load_exampledata(self):
+        self.stat_analyzer.set_dataset(load_exampledata())
+
     def init_setup(self,analysis_name):
+
+        
 
         if not self.stat_analyzer.has_dataset():
 
-            if analysis_name == 'Load example-data':
-                self.stat_analyzer.set_dataset(load_exampledata())
-                return
+            err_msg = 'Error: No dataset.\n'
+            err_msg = err_msg + 'Try loading the example dataset.\n(File -> Load exampledata)'
 
-            messagebox.showerror(title=None,
-                    message='Error: No dataset.\nTry loading the example dataset.')
+            messagebox.showerror(title=None,message=err_msg)
             return
 
         if analysis_name == 'Summary':
