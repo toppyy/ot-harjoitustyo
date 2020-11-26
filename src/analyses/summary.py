@@ -11,4 +11,3 @@ def summary(data):
         Text( "Mean:   {}".format(mean(data)) ),
         Text( "Std.dev: {}".format(standard_deviation(data)) )
     ]
-

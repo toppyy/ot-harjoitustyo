@@ -1,10 +1,9 @@
 from tkinter import ttk
 from tkinter import messagebox
 
-from gui.analysis.summary import Summary
-from gui.analysis.frequency_table import Frequencytable
-from gui.error import Error
-from misc.load_exampledata import load_exampledata
+from gui.analysis.summary           import Summary
+from gui.analysis.frequency_table   import Frequencytable
+from misc.load_exampledata          import load_exampledata
 
 
 class GUI:
@@ -17,7 +16,7 @@ class GUI:
     def start(self):
         frame = ttk.Frame(master=self.root)
 
-       
+
         for idx, text in enumerate(self.available_commands):
             btn = ttk.Button(master=frame, text=text,
                              command=lambda text=text: self.init_setup(text))
@@ -33,7 +32,8 @@ class GUI:
                 self.stat_analyzer.set_dataset(load_exampledata())
                 return
 
-            messagebox.showerror(title=None, message='Error: No dataset.\nTry loading the example dataset.')
+            messagebox.showerror(title=None,
+                    message='Error: No dataset.\nTry loading the example dataset.')
             return
 
         if analysis_name == 'Summary':
@@ -43,4 +43,3 @@ class GUI:
         if analysis_name == 'Frequency table':
             setup = Frequencytable(self.stat_analyzer)
             setup.pack()
-
