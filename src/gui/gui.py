@@ -1,10 +1,10 @@
 from tkinter import ttk
 from tkinter import messagebox
-from tkinter import Menu
+from tkinter import Menu, filedialog
 
 from gui.analysis.summary           import Summary
 from gui.analysis.frequency_table   import Frequencytable
-from misc.load_exampledata          import load_exampledata
+from misc.load_file_as_dataset      import load_file_as_dataset, load_exampledata
 
 
 class GUI:
@@ -25,22 +25,29 @@ class GUI:
 
         frame.pack()
 
-        # Menu
+        self.construct_menu()
+
+    def construct_menu(self):
         menu = Menu(self.root)
         self.root.config(menu=menu)
         filemenu = Menu(menu)
         menu.add_cascade(label='File', menu=filemenu)
+
+        filemenu.add_command(label='Load CSV-file..',command=self.open_file)
         filemenu.add_command(label='Load exampledata', command=self.load_exampledata)
-        filemenu.add_command(label='Open...')
+        
         filemenu.add_separator()
         filemenu.add_command(label='Exit', command=self.root.quit)
+
+    def open_file(self):
+        path = filedialog.askopenfilename()
+        data = load_file_as_dataset(path)
+        self.stat_analyzer.set_dataset(data)
 
     def load_exampledata(self):
         self.stat_analyzer.set_dataset(load_exampledata())
 
     def init_setup(self,analysis_name):
-
-        
 
         if not self.stat_analyzer.has_dataset():
 
