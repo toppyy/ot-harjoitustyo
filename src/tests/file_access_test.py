@@ -2,7 +2,7 @@ import unittest
 from file_access import FileAccess
 
 
-class TestGuesstype(unittest.TestCase):
+class TestFileAccess(unittest.TestCase):
 
     def test_csv_read(self):
 
