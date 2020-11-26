@@ -32,7 +32,3 @@ class StatAnalyzer:
 
     def has_dataset(self):
         return self.dataset is not None
-
-
-    def get_available_commands(self):
-        return ['Frequency table', 'Summary', 'Load example-data']
