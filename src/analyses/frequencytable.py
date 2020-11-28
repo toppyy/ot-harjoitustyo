@@ -15,7 +15,7 @@ def frequencytable(column):
         freq_list.append([key,value])
 
     results = [
-            Header('Frequency table'),
+            Header(column["column_name"]),
             Table(freq_list)
     ]
 

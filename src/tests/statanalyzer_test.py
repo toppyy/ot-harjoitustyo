@@ -44,4 +44,4 @@ class TestStatAnalyzer(unittest.TestCase):
         # Two first cells are the headers. Third cell is "A".
         numberOfAs = cells.get_output(None,1)[3]
 
-        self.assertIn('10', numberOfAs.get())
+        self.assertEqual('10', numberOfAs.get())
