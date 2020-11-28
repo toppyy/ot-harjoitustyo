@@ -1,8 +1,11 @@
 from gui.output_elements.table import Table
+from gui.output_elements.header import Header
 
-def frequencytable(data):
+def frequencytable(column):
 
     freqs = {}
+
+    data = column["data"]
 
     for item in data:
         freqs[item] = freqs.get(item, 0) + 1
@@ -12,6 +15,7 @@ def frequencytable(data):
         freq_list.append([key,value])
 
     results = [
+            Header('Frequency table'),
             Table(freq_list)
     ]
 

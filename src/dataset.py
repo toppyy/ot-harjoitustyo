@@ -44,7 +44,10 @@ class Dataset:
             self.dataset[self.column_names[col_idx]] = convert_to(column, coltype)
 
     def get_column(self, column_name):
-        return self.dataset[column_name]
+        return {
+            "column_name": column_name,
+            "data": self.dataset[column_name]
+        }
 
     def get_column_names(self):
         return self.column_names

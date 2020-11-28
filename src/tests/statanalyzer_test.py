@@ -26,9 +26,9 @@ class TestStatAnalyzer(unittest.TestCase):
 
         summaryresult = self.stat_analyzer.summary("col0")
 
-        median = summaryresult[0].get_text()
-        mean   = summaryresult[1].get_text()
-        stdev  = summaryresult[2].get_text()
+        median = summaryresult[1].get_text()
+        mean   = summaryresult[2].get_text()
+        stdev  = summaryresult[3].get_text()
 
         self.assertIn(   '54.67', mean   ) # Eg. "Mean: 54.67" is expected
         self.assertIn(   '53.8' , median )
@@ -38,6 +38,10 @@ class TestStatAnalyzer(unittest.TestCase):
 
         freqtable = self.stat_analyzer.frequencytable("col1")
 
-        numberOfAs = freqtable[0].get_text()
+        cells = freqtable[1] # Get Table 
 
-        self.assertIn('A: 10', numberOfAs)
+        # The fourth cell is the number of A's. 
+        # Two first cells are the headers. Third cell is "A".
+        numberOfAs = cells.get_output(None,1)[3]
+
+        self.assertIn('10', numberOfAs.get())

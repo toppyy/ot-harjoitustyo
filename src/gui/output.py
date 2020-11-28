@@ -16,7 +16,6 @@ class Output:
 
         for idx, element in enumerate(self.analysis):
             element.get_output(self.frame, idx)
-            
 
     def destroy(self):
         self.frame.destroy()
