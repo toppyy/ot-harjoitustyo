@@ -2,10 +2,10 @@ from file_access import FileAccess
 from dataset import Dataset
 
 
-def load_file_as_dataset(path):
+def load_file_as_dataset(path, delimiter=";", quote='"', has_header=True, row_limit=None):
 
-    data = Dataset(FileAccess().read_csv(path, ";", '"'))
-    data.create(has_header=True)
+    data = Dataset(FileAccess().read_csv(path, delimiter, quote, row_limit))
+    data.create(has_header=has_header)
 
     return data
 

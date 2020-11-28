@@ -4,6 +4,7 @@ from tkinter import Menu, filedialog
 
 from gui.analysis.summary           import Summary
 from gui.analysis.frequency_table   import Frequencytable
+from gui.data_input                 import DataInput
 from misc.load_file_as_dataset      import load_file_as_dataset, load_exampledata
 
 
@@ -33,9 +34,9 @@ class GUI:
         filemenu = Menu(menu)
         menu.add_cascade(label='File', menu=filemenu)
 
-        filemenu.add_command(label='Load CSV-file..',command=self.open_file)
+        filemenu.add_command(label='Load CSV-file..',command=self.open_datainput)
         filemenu.add_command(label='Load exampledata', command=self.load_exampledata)
-        
+
         filemenu.add_separator()
         filemenu.add_command(label='Exit', command=self.root.quit)
 
@@ -43,6 +44,12 @@ class GUI:
         path = filedialog.askopenfilename()
         data = load_file_as_dataset(path)
         self.stat_analyzer.set_dataset(data)
+
+    def open_datainput(self):
+
+        DataInput(self.stat_analyzer.set_dataset)
+
+
 
     def load_exampledata(self):
         self.stat_analyzer.set_dataset(load_exampledata())

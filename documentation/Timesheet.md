@@ -1,7 +1,7 @@
 
 # Timesheet
 
-Total hours spent **18**
+Total hours spent **20**
 
 | date | hours spent | doing what  |
 | :----:|:-----| :-----|
@@ -15,3 +15,4 @@ Total hours spent **18**
 | 23.11 | 3    | GUI-views, freq.tables |
 | 24.11 | 2    | Refactor, tests |
 | 26.11 | 2    | Menu, file loader, table output |
+| 28.11 | 2    | File loader with parameters |
