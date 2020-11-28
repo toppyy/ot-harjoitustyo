@@ -20,7 +20,7 @@ python3 -m pipenv install
 ```bash
 python3 -m pipenv run start
 ```
-At the moment it's only possible to analyze an example dataset. To analyse a different dataset, manipulate the index.py-file. 
+At the moment it's only possible to analyze plain text files that separate columns with ";".  
 
 Alternatively you can run `python3 -m pipenv run dev` which loads the example data on start-up.
 
