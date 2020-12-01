@@ -1,6 +1,4 @@
-from tkinter import ttk
-from tkinter import messagebox
-from tkinter import Menu, filedialog
+from tkinter import ttk, Tk, messagebox, Menu, filedialog
 
 from gui.analysis.summary           import Summary
 from gui.analysis.frequency_table   import Frequencytable
@@ -10,10 +8,14 @@ from misc.load_file_as_dataset      import load_file_as_dataset, load_exampledat
 
 class GUI:
 
-    def __init__(self, root, StatAnalyzer):
-        self.root = root
+    def __init__(self, StatAnalyzer):
+        window = Tk()
+        window.title("Stat analyzer")
+        self.root = window
         self.stat_analyzer = StatAnalyzer
         self.available_commands = ['Frequency table', 'Summary']
+
+  
 
     def start(self):
         frame = ttk.Frame(master=self.root)
@@ -27,6 +29,8 @@ class GUI:
         frame.pack()
 
         self.construct_menu()
+
+        self.root.mainloop()
 
     def construct_menu(self):
         menu = Menu(self.root)

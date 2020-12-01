@@ -17,10 +17,7 @@ if len(arguments) > 1 and arguments[1] == 'dev':
 
 stat_analyzer = StatAnalyzer(DATASET)
 
-window = Tk()
-window.title("Stat analyzer")
 
-ui = GUI(window, stat_analyzer)
+ui = GUI(stat_analyzer)
 ui.start()
 
-window.mainloop()
