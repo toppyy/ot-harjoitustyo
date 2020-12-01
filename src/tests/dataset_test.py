@@ -12,7 +12,7 @@ class TestDataset(unittest.TestCase):
         self.dataset = Dataset(  self.rows  )
 
     def test_dataset_creation(self):
-        
+
         dataset = self.dataset
         dataset.create(has_header=True)
 
@@ -21,7 +21,7 @@ class TestDataset(unittest.TestCase):
         self.assertEqual(rowcount, 310)
 
     def test_dataset_creation_without_headers(self):
-        
+
         dataset = self.dataset
         dataset.create(has_header=False)
 
