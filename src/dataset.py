@@ -52,6 +52,9 @@ class Dataset:
     def get_column_names(self):
         return self.column_names
 
+    def get_rowcount(self):
+        return len(self.rows)
+
     def get_column_types(self):
         return self.column_types
 
