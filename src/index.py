@@ -1,6 +1,4 @@
-
 import sys
-from tkinter import Tk
 
 from stat_analyzer import StatAnalyzer
 from gui.gui import GUI
@@ -20,4 +18,3 @@ stat_analyzer = StatAnalyzer(DATASET)
 
 ui = GUI(stat_analyzer)
 ui.start()
-
