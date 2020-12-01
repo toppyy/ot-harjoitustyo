@@ -2,6 +2,10 @@
 
 The application provides an access to simple statistical analysis for text files.
 
+## Releases
+
+* [Week 5](https://github.com/toppyy/ot-harjoitustyo/releases/viikko5)
+
 ## Documentation
 
 * [Requirements](https://github.com/toppyy/ot-harjoitustyo/blob/master/documentation/Requirements.md)
