@@ -44,10 +44,6 @@ class GUI:
         filemenu.add_separator()
         filemenu.add_command(label='Exit', command=self.root.quit)
 
-    def open_file(self):
-        path = filedialog.askopenfilename()
-        data = load_file_as_dataset(path)
-        self.stat_analyzer.set_dataset(data)
 
     def open_datainput(self):
 
