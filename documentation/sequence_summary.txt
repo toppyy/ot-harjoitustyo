@@ -1,0 +1,7 @@
+User->GUI: Click "Summary"
+GUI->Summary: Summary(StatAnalyzer)
+Summary->+StatAnalyzer: summary(column_name)
+StatAnalyzer->DataSet: get_column(column_name)
+DataSet-->-StatAnalyzer: column data
+StatAnalyzer-->-Summary: result
+Summary->Output: Output(result)

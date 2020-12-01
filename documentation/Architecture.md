@@ -9,3 +9,13 @@ Each "analysis task" (e.g. summary statistics or frequency table) has it's own i
 
 ![Architecture](logical_structure.png)
 
+
+# Functionality
+
+## Loading a dataset
+
+![dataset_load](sequence_data_load.png)
+
+## Summary statistics
+
+![summary](sequence_summary.png)

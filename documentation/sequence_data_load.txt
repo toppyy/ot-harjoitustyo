@@ -1,0 +1,7 @@
+User->GUI: Click "Load CSV-file"
+GUI->DataInput: DataInput(set_dataset)
+User->DataInput: Click "Load dataset"
+DataInput->+DataSet: Dataset(filecontent)
+DataSet-->-DataInput: Dataset
+DataInput->GUI: set_dataset(Dataset)
+GUI->StatAnalyzer: set_dataset(Dataset)
