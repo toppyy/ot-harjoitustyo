@@ -1,4 +1,6 @@
 import csv
+import sys
+from tkinter import messagebox
 
 class FileAccess:
 
@@ -17,7 +19,11 @@ class FileAccess:
                 if row_limit is not None and row_count is row_limit:
                     break
 
+            if len(rows) == 0:
+                raise Exception('File is empty')
+
             return rows
 
-        except FileExistsError:
-            print('File does not exist')
+        except Exception as e:
+            messagebox.showerror(message='Error reading file: {}.\n\nNo data loaded.'.format(str(e)))
+            
