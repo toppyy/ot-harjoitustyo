@@ -1,5 +1,4 @@
 import csv
-import sys
 from tkinter import messagebox
 
 class FileAccess:
@@ -24,6 +23,6 @@ class FileAccess:
 
             return rows
 
-        except Exception as e:
-            messagebox.showerror(message='Error reading file: {}.\n\nNo data loaded.'.format(str(e)))
-            
+        except Exception as err:
+            error_msg = 'Error reading file: {}.\n\nNo data loaded.'.format(str(err))
+            messagebox.showerror(message=error_msg)

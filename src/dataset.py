@@ -21,7 +21,7 @@ class Dataset:
         return column_names
 
     def create(self, has_header=True):
-        
+
         # Do nothing if there are no rows
         if self.rows is None:
             return
@@ -43,10 +43,10 @@ class Dataset:
 
             guessingrows = 5
             coltype = guesstype(column[0:guessingrows])
-            
+
             # Convert_to returns the coltype that resulted, not what was requested
             data_and_coltype = convert_to(column, coltype, self.column_names[col_idx])
-            
+
             self.dataset[self.column_names[col_idx]] = data_and_coltype["data"]
             self.column_types.append(data_and_coltype["coltype"])
 

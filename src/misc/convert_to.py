@@ -10,7 +10,9 @@ def convert_to(data, coltype, column_name):
             data = [float(obs) for obs in data]
 
     except ValueError:
-        messagebox.showwarning(message='Error converting column {} to {}. \nReturning column as str.'.format(column_name,coltype))
+        error_msg = 'Error converting column {} to {}'.format(column_name,coltype)
+        error_msg = error_msg + '\nReturning column as str.'
+        messagebox.showwarning(message=error_msg)
         coltype='str'
 
     return {
