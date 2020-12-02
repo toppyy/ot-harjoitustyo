@@ -20,5 +20,4 @@ class Summary(Setup):
             btn.grid(row=idx+1, column=0)
 
     def analyze(self, column_name):
-        print('Doing summary for {}'.format(column_name))
         self.display_result(self.stat_analyzer.summary(column_name))

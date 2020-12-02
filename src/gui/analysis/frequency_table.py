@@ -25,5 +25,4 @@ class Frequencytable(Setup):
             columntype.grid(row=idx+1, column=1)
 
     def analyze(self, column_name):
-        print('Doing freqtable for {}'.format(column_name))
         self.display_result(self.stat_analyzer.frequencytable(column_name))
