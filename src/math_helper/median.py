@@ -5,4 +5,7 @@ def median(data):
 
     midpoint = len(data) // 2
 
-    return data[midpoint]
+    if len(data) % 2 == 1:
+        return data[midpoint]
+
+    return sum(data[(midpoint-1):(midpoint+1)]) / 2
