@@ -1,7 +1,7 @@
 from tkinter import ttk, Tk, messagebox, Menu
 
 from gui.analysis.summary           import Summary
-from gui.analysis.frequency_table   import Frequencytable
+from gui.analysis.frequencytable    import Frequencytable
 from gui.data_input                 import DataInput
 from misc.load_file_as_dataset      import load_exampledata
 
