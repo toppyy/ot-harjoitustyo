@@ -1,7 +1,7 @@
 
 # Timesheet
 
-Total hours spent **21**
+Total hours spent **23**
 
 | date | hours spent | doing what  |
 | :----:|:-----| :-----|
@@ -17,3 +17,4 @@ Total hours spent **21**
 | 26.11 | 2    | Menu, file loader, table output |
 | 28.11 | 2    | File loader with parameters |
 | 1.12  | 1    | Minor fixes |
+| 6.12  | 2    | Summary table |

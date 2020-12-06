@@ -1,6 +1,6 @@
-from analyses.summary import summary
+from analyses.summary        import summary
 from analyses.frequencytable import frequencytable
-
+from analyses.summarytable   import summarytable
 
 class StatAnalyzer:
 
@@ -17,6 +17,11 @@ class StatAnalyzer:
     def frequencytable(self, column):
         data = self.dataset.get_column(column)
         return frequencytable(data)
+
+    def summarytable(self, column_to_summarise_by,column_to_summarise):
+        data_summarise_by   = self.dataset.get_column(column_to_summarise_by)
+        data_summarise      = self.dataset.get_column(column_to_summarise)
+        return summarytable(data_summarise_by,data_summarise)
 
     def get_column_names(self):
         return self.dataset.get_column_names()

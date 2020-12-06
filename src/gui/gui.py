@@ -2,6 +2,7 @@ from tkinter import ttk, Tk, messagebox, Menu
 
 from gui.analysis.summary           import Summary
 from gui.analysis.frequencytable    import Frequencytable
+from gui.analysis.summarytable      import Summarytable
 from gui.data_input                 import DataInput
 from misc.load_file_as_dataset      import load_exampledata
 
@@ -13,7 +14,7 @@ class GUI:
         window.title("Stat analyzer")
         self.root = window
         self.stat_analyzer = StatAnalyzer
-        self.available_commands = ['Frequency table', 'Summary']
+        self.available_commands = ['Frequency table', 'Summary','Summary table']
 
 
     def start(self):
@@ -48,8 +49,6 @@ class GUI:
 
         DataInput(self.stat_analyzer.set_dataset)
 
-
-
     def load_exampledata(self):
         self.stat_analyzer.set_dataset(load_exampledata())
 
@@ -69,4 +68,8 @@ class GUI:
 
         if analysis_name == 'Frequency table':
             setup = Frequencytable(self.stat_analyzer)
+            setup.pack()
+
+        if analysis_name == 'Summary table':
+            setup = Summarytable(self.stat_analyzer)
             setup.pack()

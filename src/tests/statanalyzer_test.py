@@ -31,10 +31,10 @@ class TestStatAnalyzer(unittest.TestCase):
         stdev  = summaryresult[3].get_text()
 
         self.assertIn(   '54.67', mean   ) # Eg. "Mean: 54.67" is expected
-        self.assertIn(   '53.8' , median )
+        self.assertIn(   '53.0' , median )
         self.assertIn(   '16.87', stdev  )
 
-    def test_frequency_table(self):
+    def test_frequencytable(self):
 
         freqtable = self.stat_analyzer.frequencytable("col1")
 
@@ -45,3 +45,17 @@ class TestStatAnalyzer(unittest.TestCase):
         numberOfAs = cells.get_output(None,1)[3]
 
         self.assertEqual('10', numberOfAs.get())
+
+
+    def test_summarytable(self):
+
+        summarytable = self.stat_analyzer.summarytable("col1","col0")
+
+        cells = summarytable[1] # Get Table 
+
+        # Four first cells are the headers. Fifth cell is "A".
+        stats = cells.get_output(None,1)[5:8]
+
+        self.assertEqual('10', stats[0].get())                          # Count
+        self.assertAlmostEqual(61.58, float(stats[1].get()), places=2)  # Mean
+        self.assertAlmostEqual(59.2, float(stats[2].get()),places=1)    # Median
