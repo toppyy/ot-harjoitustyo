@@ -5,7 +5,9 @@ class Output:
     def __init__(self, analysis):
         self.frame = None
         self.analysis = analysis
-        self.initialize()
+
+        if self.analysis is not None:
+            self.initialize()
 
     def initialize(self):
 
@@ -21,4 +23,5 @@ class Output:
         self.frame.destroy()
 
     def pack(self):
-        self.frame.pack()
+        if self.frame is not None:
+            self.frame.pack()

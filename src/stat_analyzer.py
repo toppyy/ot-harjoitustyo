@@ -1,6 +1,7 @@
 from analyses.summary        import summary
 from analyses.frequencytable import frequencytable
 from analyses.summarytable   import summarytable
+from analyses.scatterplot    import scatterplot
 
 class StatAnalyzer:
 
@@ -22,6 +23,12 @@ class StatAnalyzer:
         data_summarise_by   = self.dataset.get_column(column_to_summarise_by)
         data_summarise      = self.dataset.get_column(column_to_summarise)
         return summarytable(data_summarise_by,data_summarise)
+
+    def scatterplot(self, column_name_a, column_name_b):
+        column_a   = self.dataset.get_column(column_name_a)
+        column_b    = self.dataset.get_column(column_name_b)
+
+        return scatterplot(column_a,column_b)
 
     def get_column_names(self):
         return self.dataset.get_column_names()
