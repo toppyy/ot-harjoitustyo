@@ -1,7 +1,7 @@
 
 # Timesheet
 
-Total hours spent **23**
+Total hours spent **24**
 
 | date | hours spent | doing what  |
 | :----:|:-----| :-----|
@@ -18,3 +18,4 @@ Total hours spent **23**
 | 28.11 | 2    | File loader with parameters |
 | 1.12  | 1    | Minor fixes |
 | 6.12  | 2    | Summary table |
+| 7.12  | 1    | Scatterplot |
