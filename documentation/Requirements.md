@@ -11,8 +11,8 @@ The purpose of this application is to provide the user an easy access to statist
 - The user is able to view a part of the loaded dataset
 - The user can perform and view results of simple descriptive statistical analysis. For example:
     - Summary statistics (mean, standard deviation etc.) (DONE)
-    - Simple plots (e.g. scatterplot, barplot) (scatterplot DONE)
-    - Cross-tabulations
+    - Simple plots (e.g. scatterplot, barplot) (DONE)
+    - Cross-tabulations (Summary tables DONE)
 
 ### Further development ideas
 - The user can manipulate the dataset
