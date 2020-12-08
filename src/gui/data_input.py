@@ -65,8 +65,7 @@ class DataInput:
         delimiter = self.delimiter.get()
         has_header = self.has_header.get()
 
-
-        data = Dataset(FileAccess().read_csv(path, delimiter, '"', row_limit))
+        data = Dataset(FileAccess().read_csv(path, delimiter, '"', row_limit, self.gui))
         data.create(has_header=has_header, gui=self.gui)
 
         self.set_dataset(data)

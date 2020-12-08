@@ -2,19 +2,14 @@ import sys
 
 from stat_analyzer import StatAnalyzer
 from gui.gui import GUI
-from misc.load_exampledata import load_exampledata
 
 arguments = sys.argv
 
-DATASET = None
+stat_analyzer = StatAnalyzer(None)
+ui = GUI(stat_analyzer)
 
 # If running with argument "dev". Load example data
 if len(arguments) > 1 and arguments[1] == 'dev':
-    DATASET = load_exampledata()
+    ui.load_exampledata()
 
-
-stat_analyzer = StatAnalyzer(DATASET)
-
-
-ui = GUI(stat_analyzer)
 ui.start()

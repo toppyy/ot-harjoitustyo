@@ -1,9 +1,8 @@
 import csv
-from tkinter import messagebox
 
 class FileAccess:
 
-    def read_csv(self, path, delimiter, quote='"', row_limit=None):
+    def read_csv(self, path, delimiter, quote='"', row_limit=None, gui=None):
 
         csvfile = open(path, 'r', encoding='ISO-8859-1')
 
@@ -24,5 +23,6 @@ class FileAccess:
             return rows
 
         except Exception as err:
-            error_msg = 'Error reading file: {}.\n\nNo data loaded.'.format(str(err))
-            messagebox.showerror(message=error_msg)
+            if gui is not None:
+                error_msg = 'Error reading file: {}.\n\nNo data loaded.'.format(str(err))
+                gui.show_error(error_msg)

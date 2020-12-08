@@ -81,3 +81,6 @@ class GUI:
 
     def show_warning(self,warningmsg):
         messagebox.showwarning(message=warningmsg)
+
+    def show_error(self,warningmsg):
+        messagebox.showerror(message=warningmsg)
