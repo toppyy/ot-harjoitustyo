@@ -3,8 +3,16 @@ from file_access import FileAccess
 from dataset import Dataset
 
 class DataInput:
+    """Class responsible for the view controlling loading datasets
+    """
 
     def __init__(self, set_dataset, gui):
+        """Constructor
+
+        Args:
+            set_dataset: function to be called once the dataset is created
+            gui: reference to the gui creating the instance
+        """
 
         self.path = filedialog.askopenfilename()
         self.window = Tk()
@@ -20,6 +28,8 @@ class DataInput:
 
 
     def init(self):
+        """Initialize the view
+        """
 
 
         self.window.title("Data input")
@@ -60,6 +70,11 @@ class DataInput:
 
 
     def read_data(self,row_limit=None ):
+        """Reads a dataset
+
+        Args:
+            row_limit: The number of rows to read from the data. All are read if None. Defaults to None.
+        """
 
         path = self.path
         delimiter = self.delimiter.get()
