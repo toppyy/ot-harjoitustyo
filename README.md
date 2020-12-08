@@ -11,6 +11,7 @@ The application provides an access to simple statistical analysis for text files
 * [Requirements](https://github.com/toppyy/ot-harjoitustyo/blob/master/documentation/Requirements.md)
 * [Timesheet](https://github.com/toppyy/ot-harjoitustyo/blob/master/documentation/Timesheet.md)
 * [Architecture](https://github.com/toppyy/ot-harjoitustyo/blob/master/documentation/Architecture.md)
+* [User guide](https://github.com/toppyy/ot-harjoitustyo/blob/master/documentation/UserGuide.md)
 
 ## Setup and running the application
 
