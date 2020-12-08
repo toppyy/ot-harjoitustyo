@@ -1,4 +1,4 @@
-from tkinter import ttk, Tk, filedialog, Radiobutton, BooleanVar, messagebox
+from tkinter import ttk, Tk, filedialog, Radiobutton, BooleanVar
 from file_access import FileAccess
 from dataset import Dataset
 

@@ -67,4 +67,4 @@ class Scatterplot(Setup):
 
         col_a = self.variables_to_plot[0]
         col_b = self.variables_to_plot[1]
-        self.display_result(self.stat_analyzer.scatterplot(col_a,col_b))
+        self.stat_analyzer.scatterplot(col_a,col_b)

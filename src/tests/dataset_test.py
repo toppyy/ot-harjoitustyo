@@ -58,5 +58,5 @@ class TestDataset(unittest.TestCase):
 
         result_of_conversion = self.dataset.convert_to(['10.7','5x','2.1'],'float','test_column')
 
-        self.assertEqual(['10x.7','5x','2.1'],result_of_conversion['data'])
+        self.assertEqual(['10.7','5x','2.1'],result_of_conversion['data'])
         self.assertEqual('str',result_of_conversion['coltype'])

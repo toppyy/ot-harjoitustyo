@@ -1,4 +1,3 @@
-from tkinter import messagebox
 
 def convert_to(data, coltype):
 

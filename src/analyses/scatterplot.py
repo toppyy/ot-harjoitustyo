@@ -17,5 +17,3 @@ def scatterplot(column_a,column_b):
 
     plt.scatter(data_a, data_b, alpha=0.5)
     plt.show()
-
-    return None

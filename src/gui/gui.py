@@ -1,9 +1,5 @@
 from tkinter import ttk, Tk, messagebox, Menu
 
-from gui.analysis_setup.summary           import Summary
-from gui.analysis_setup.frequencytable    import Frequencytable
-from gui.analysis_setup.summarytable      import Summarytable
-from gui.analysis_setup.scatterplot       import Scatterplot
 from gui.data_input                       import DataInput
 from misc.load_exampledata                import load_exampledata
 
@@ -15,14 +11,13 @@ class GUI:
         window.title("Stat analyzer")
         self.root = window
         self.stat_analyzer = StatAnalyzer
-        self.available_commands = ['Frequency table', 'Summary','Summary table', 'Scatterplot']
-
+        self.analyses = self.stat_analyzer.get_available_analyses()
 
     def start(self):
         frame = ttk.Frame(master=self.root)
 
 
-        for idx, text in enumerate(self.available_commands):
+        for idx, text in enumerate(self.analyses.keys()):
             btn = ttk.Button(master=frame, text=text,
                              command=lambda text=text: self.init_setup(text))
             btn.grid(row=idx+1, column=0)
@@ -63,21 +58,9 @@ class GUI:
             messagebox.showerror(title=None,message=err_msg)
             return
 
-        if analysis_name == 'Summary':
-            setup = Summary(self.stat_analyzer)
-            setup.pack()
-
-        if analysis_name == 'Frequency table':
-            setup = Frequencytable(self.stat_analyzer)
-            setup.pack()
-
-        if analysis_name == 'Summary table':
-            setup = Summarytable(self.stat_analyzer)
-            setup.pack()
-
-        if analysis_name == 'Scatterplot':
-            setup = Scatterplot(self.stat_analyzer)
-            setup.pack()
+        analysis = self.analyses[analysis_name]
+        setup = analysis(self.stat_analyzer)
+        setup.pack()
 
     def show_warning(self,warningmsg):
         messagebox.showwarning(message=warningmsg)
