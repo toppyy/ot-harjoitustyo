@@ -4,6 +4,7 @@ The application provides an access to simple statistical analysis for text files
 
 ## Releases
 
+* [Week 6](https://github.com/toppyy/ot-harjoitustyo/releases/tag/week6)
 * [Week 5](https://github.com/toppyy/ot-harjoitustyo/releases/viikko5)
 
 ## Documentation
