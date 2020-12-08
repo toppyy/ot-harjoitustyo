@@ -20,6 +20,8 @@ Project structure:
         - Miscellanious helper functions
     - **/tests**
         - Tests for the project
+    - **/test_helpers**
+        - Helpers for tests
 
         
 ##  User interface
