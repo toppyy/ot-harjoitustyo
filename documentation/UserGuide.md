@@ -28,13 +28,13 @@ python3 -m pipenv run start
 
 ## 3. Choose which analysis task you want to perform
 
-* 1. Choose one of the tasks by clicking one of the buttons (eg. Frequency table)
+1. Choose one of the tasks by clicking one of the buttons (eg. Frequency table)
 
-* 2. A setup view opens:
+2. A setup view opens:
 
 ![analysis_setup](analysis_setup.png)
 
-* 3. We'll choose "maakunta" by clicking it. This will do a frequency table of the variable "maakunta" and display the results:
+3. We'll choose "maakunta" by clicking it. This will do a frequency table of the variable "maakunta" and display the results:
 
 ![output](output.png)
 
