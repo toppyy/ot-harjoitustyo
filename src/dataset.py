@@ -21,6 +21,7 @@ class Dataset:
         self.dataset = None
         self.column_names = None
         self.column_types = []
+        self.gui = None
 
 
     def create_column_names(self,has_header):
@@ -40,13 +41,16 @@ class Dataset:
 
         return column_names
 
-    def create(self, has_header=True):
+    def create(self, has_header=True, gui=None):
         """ Stores the data as columns instead of rows and stores column names
             Data is stored in a dict. The key is the column name.
 
         Args:
             has_header (bool, optional): True if the dataset has a header row. Defaults to True.
+            gui: Reference to the main class controlling the GUI
         """
+
+        self.gui = gui
 
         if self.rows is None:
             return
@@ -66,10 +70,45 @@ class Dataset:
             guessingrows = 5
             coltype = guesstype(column[0:guessingrows])
 
-            data_and_coltype = convert_to(column, coltype, self.column_names[col_idx])
+            column_name = self.column_names[col_idx]
 
-            self.dataset[self.column_names[col_idx]] = data_and_coltype["data"]
+            data_and_coltype = self.convert_to( column, coltype, column_name )
+
+            self.dataset[column_name] = data_and_coltype["data"]
             self.column_types.append(data_and_coltype["coltype"])
+
+    def convert_to(self,data,target_type,column_name):
+        """Tries to do data conversion
+
+        Args:
+            data: A list of data to be converted
+            target_type: The type of data to be converted to
+            column_name: Name of column that is under conversion
+
+        Returns:
+            dict: Object that has the converted data and data type after conversion
+        """
+
+        try:
+            return {
+                "data": convert_to(data,target_type),
+                "coltype": target_type
+            }
+        except ValueError:
+
+            error_msg = 'Error converting column {} to {}'.format(column_name,target_type)
+            error_msg = error_msg + '\nReturning column as str.'
+
+            self.gui.show_warning(error_msg)
+
+            result_type='str'
+
+        return {
+            "data": data,
+            "coltype": result_type
+        }
+
+
 
     def get_column(self, column_name):
         """Returns data and name for requested column

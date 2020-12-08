@@ -5,7 +5,7 @@ from gui.analysis_setup.frequencytable    import Frequencytable
 from gui.analysis_setup.summarytable      import Summarytable
 from gui.analysis_setup.scatterplot       import Scatterplot
 from gui.data_input                       import DataInput
-from misc.load_file_as_dataset            import load_exampledata
+from misc.load_exampledata                import load_exampledata
 
 
 class GUI:
@@ -48,10 +48,10 @@ class GUI:
 
     def open_datainput(self):
 
-        DataInput(self.stat_analyzer.set_dataset)
+        DataInput(self.stat_analyzer.set_dataset, gui=self)
 
     def load_exampledata(self):
-        self.stat_analyzer.set_dataset(load_exampledata())
+        self.stat_analyzer.set_dataset(load_exampledata(gui=self))
 
     def init_setup(self,analysis_name):
 
@@ -78,3 +78,6 @@ class GUI:
         if analysis_name == 'Scatterplot':
             setup = Scatterplot(self.stat_analyzer)
             setup.pack()
+
+    def show_warning(self,warningmsg):
+        messagebox.showwarning(message=warningmsg)

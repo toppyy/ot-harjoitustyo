@@ -2,7 +2,7 @@ import sys
 
 from stat_analyzer import StatAnalyzer
 from gui.gui import GUI
-from misc.load_file_as_dataset import load_exampledata
+from misc.load_exampledata import load_exampledata
 
 arguments = sys.argv
 

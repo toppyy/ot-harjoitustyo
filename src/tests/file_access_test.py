@@ -10,7 +10,7 @@ class TestFileAccess(unittest.TestCase):
         rows = FileAccess().read_csv(path, ";", '"')
 
         first_row = 'aluekoodi;maakunta;vaesto65_84;sepelvaltimotauti_korv_oikeus;sepelvaltimotauti_korv_oikeus_osuus'
-        
+
         self.assertEqual(first_row,';'.join(rows[0]))
 
     def test_csv_read_rowlimit(self):

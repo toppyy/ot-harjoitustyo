@@ -1,9 +1,10 @@
-from tkinter import ttk, Tk, filedialog, Radiobutton, BooleanVar
-from misc.load_file_as_dataset import load_file_as_dataset
+from tkinter import ttk, Tk, filedialog, Radiobutton, BooleanVar, messagebox
+from file_access import FileAccess
+from dataset import Dataset
 
 class DataInput:
 
-    def __init__(self, set_dataset):
+    def __init__(self, set_dataset, gui):
 
         self.path = filedialog.askopenfilename()
         self.window = Tk()
@@ -12,6 +13,8 @@ class DataInput:
 
         self.set_dataset = set_dataset
         self.delimiter = None
+
+        self.gui = gui
 
         self.init()
 
@@ -55,14 +58,16 @@ class DataInput:
         options.pack()
         self.window.mainloop()
 
+
     def read_data(self,row_limit=None ):
 
-        data = load_file_as_dataset(
-                path = self.path
-                ,delimiter = self.delimiter.get()
-                ,has_header = self.has_header.get()
-                ,row_limit = row_limit
-        )
+        path = self.path
+        delimiter = self.delimiter.get()
+        has_header = self.has_header.get()
+
+
+        data = Dataset(FileAccess().read_csv(path, delimiter, '"', row_limit))
+        data.create(has_header=has_header, gui=self.gui)
 
         self.set_dataset(data)
 
