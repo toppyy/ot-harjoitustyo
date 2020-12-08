@@ -1,7 +1,7 @@
 
 # Timesheet
 
-Total hours spent **24**
+Total hours spent **27**
 
 | date | hours spent | doing what  |
 | :----:|:-----| :-----|
@@ -19,3 +19,4 @@ Total hours spent **24**
 | 1.12  | 1    | Minor fixes |
 | 6.12  | 2    | Summary table |
 | 7.12  | 1    | Scatterplot |
+| 8.12  | 4    | Refactor, docstring, test, barplot |
