@@ -1,11 +1,11 @@
 import unittest
 from stat_analyzer import StatAnalyzer
 from dataset import Dataset
-
+from test_helpers.pseudo_gui import PseudoGUI
 
 # Helper to create data for testing
 def letter(i):
-       
+
     if i % 2 == 0:
         return 'A'
     return 'B'
@@ -21,6 +21,7 @@ class TestStatAnalyzer(unittest.TestCase):
         testdataset.create(has_header=False)
 
         self.stat_analyzer = StatAnalyzer(testdataset)
+        self.stat_analyzer.set_gui(PseudoGUI())
 
     def test_summary(self):
 

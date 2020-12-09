@@ -71,7 +71,7 @@ class StatAnalyzer:
             Output of frequency table-analysis
         """
         data = self.dataset.get_column(column)
-        return frequencytable(data)
+        return frequencytable(data,self.gui)
 
     def barplot(self,column):
         """Create barplot
@@ -151,3 +151,12 @@ class StatAnalyzer:
             Boolean: True, if dataset is set
         """
         return self.dataset is not None
+
+    def set_gui(self,gui):
+        """Setter for GUI-reference
+
+        Args:
+            gui: Instance of class GUI
+        """
+        self.gui = gui
+

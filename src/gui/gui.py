@@ -12,6 +12,7 @@ class GUI:
         self.root = window
         self.stat_analyzer = StatAnalyzer
         self.analyses = self.stat_analyzer.get_available_analyses()
+        self.stat_analyzer.set_gui(self)
 
     def start(self):
         frame = ttk.Frame(master=self.root)
@@ -67,3 +68,6 @@ class GUI:
 
     def show_error(self,warningmsg):
         messagebox.showerror(message=warningmsg)
+
+    def ask_are_you_sure(self,question):
+        return messagebox.askokcancel(title="Are you sure",message=question)
