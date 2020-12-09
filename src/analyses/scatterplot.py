@@ -1,12 +1,11 @@
-import matplotlib.pyplot as plt
 
-
-def scatterplot(column_a,column_b):
+def scatterplot(column_a,column_b, plt):
     """Displays a scatterplot of columns a and b
 
     Args:
         column_a: a dict that has the data for column_a
         column_b: a dict that has the data for column_b
+        plt: a reference to matplotlib.pyplot
 
     Returns:
         None: Nothing is returned as plot is displayed here

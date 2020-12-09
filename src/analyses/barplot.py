@@ -1,11 +1,11 @@
-import matplotlib.pyplot as plt
 
 
-def barplot(column):
+def barplot(column, plt):
     """Displays a barplot of a column
 
     Args:
         column: a dict that has the data for column
+        plt: a reference to matplotlib.pyplot
 
     Returns:
         None: Nothing is returned as plot is displayed here

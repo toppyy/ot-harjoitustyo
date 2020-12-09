@@ -1,3 +1,5 @@
+import matplotlib.pyplot as plt
+
 from analyses.summary        import summary
 from analyses.frequencytable import frequencytable
 from analyses.summarytable   import summarytable
@@ -81,7 +83,7 @@ class StatAnalyzer:
             Output of barplot (none)
         """
         data = self.dataset.get_column(column)
-        return barplot(data)
+        return barplot(data, plt)
 
     def summarytable(self, column_to_summarise_by,column_to_summarise):
         """Run summary table-analysis tasks
@@ -108,7 +110,7 @@ class StatAnalyzer:
         column_a   = self.dataset.get_column(column_name_a)
         column_b    = self.dataset.get_column(column_name_b)
 
-        return scatterplot(column_a,column_b)
+        return scatterplot(column_a,column_b,plt)
 
     def get_column_names(self):
         """Getter for column names of associated dataset
