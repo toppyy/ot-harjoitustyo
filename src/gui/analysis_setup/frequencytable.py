@@ -4,10 +4,9 @@ from gui.setup import Setup
 
 class Frequencytable(Setup):
 
-    def __init__(self, stat_analyzer):
-        Setup.__init__(self, stat_analyzer)
-
-    def do_setup(self):
+    def initialize(self):
+        """Creates the elements for this setup
+        """
 
         lbl = ttk.Label(master=self.frame,
                         text='Choose which variable to tabulate')

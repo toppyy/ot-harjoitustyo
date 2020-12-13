@@ -5,15 +5,13 @@ from gui.setup import Setup
 class Barplot(Setup):
     """Class for setting up Barplot-analysis
     """
-
-    def __init__(self, stat_analyzer):
+    def __init__(self,**kwargs):
         """Constructor
-
-        Args:
-            stat_analyzer: instance of StatAnalyzer
         """
-        Setup.__init__(self, stat_analyzer)
+
+        Setup.__init__(self,**kwargs)
         self.variable_to_plot = None
+
 
     def set_column_to_plot(self,column_name):
         """Control which columns is plotted
@@ -23,13 +21,13 @@ class Barplot(Setup):
         """
         self.variable_to_plot = column_name
 
-    def do_setup(self):
+    def initialize(self):
         """Creates the setup for this analysis
 
         """
 
         lbl = ttk.Label(master=self.frame,
-                        text="Choose which variable to summarise by:")
+                        text="Choose which variable to create barplot for:")
 
         lbl.grid(row=0, column=0)
         objects = 0

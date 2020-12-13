@@ -7,25 +7,23 @@ class Setup:
     """Generic parent class for views setting up analysis tasks
     """
 
-    def __init__(self, stat_analyzer):
+    #def __init__(self, stat_analyzer, window, show_error):
+    def __init__(self,**kwargs):
         """Constructor
 
         Args:
             stat_analyzer: reference to an instance of class StatAnalyzer
+            window: window to bind frame to
+            show_error: function to call when error occurs with error message
         """
         self.frame = None
+        self.window = kwargs['window']
+
+        self.stat_analyzer = kwargs['stat_analyzer']
+        self.show_error = kwargs['show_error']
+
+        self.frame = ttk.Frame(master=self.window)
         self.initialize()
-        self.stat_analyzer = stat_analyzer
-        self.do_setup()
-
-    def initialize(self):
-        """Create view
-        """
-
-        window = Tk()
-        window.title("Analysis setup")
-
-        self.frame = ttk.Frame(master=window)
 
     def display_result(self, result):
         """Display results by create an instance of Output-class
@@ -45,8 +43,8 @@ class Setup:
         """
         self.frame.pack()
 
-    def do_setup(self):
-        """Initialize setup view
+    def initialize(self):
+        """Initialize setup view for a particular setup
         """
         pass
 

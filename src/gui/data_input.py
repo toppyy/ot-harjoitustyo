@@ -73,7 +73,7 @@ class DataInput:
         """Reads a dataset
 
         Args:
-            row_limit: The number of rows to read from the data. All are read if None. Defaults to None.
+            row_limit: The number of rows to read from the data. All are read if None (default)
         """
 
         path = self.path

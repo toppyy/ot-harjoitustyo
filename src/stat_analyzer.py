@@ -159,4 +159,3 @@ class StatAnalyzer:
             gui: Instance of class GUI
         """
         self.gui = gui
-

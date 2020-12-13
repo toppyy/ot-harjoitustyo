@@ -4,20 +4,31 @@ from gui.setup import Setup
 class Summarytable(Setup):
 
 
-    def __init__(self, stat_analyzer):
-        Setup.__init__(self, stat_analyzer)
+    def __init__(self,**kwargs):
+        """Constructor
+        """
+
+        Setup.__init__(self,**kwargs)
+
         self.summarise_by = None
 
-
     def set_variable_to_summarise_by(self,column_name):
+        """Setter for the variable to summarise by
+
+        Args:
+            column_name: name of the column to do summary statistics by
+        """
         self.summarise_by = column_name
 
 
 
-    def do_setup(self):
+    def initialize(self):
+        """Creates the elements for this setup
+        """
 
-        self.summarise_by = None
+
         # which variable to summarise by
+
         lbl = ttk.Label(master=self.frame,
                         text="Choose which variable to summarise by:")
 

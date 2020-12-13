@@ -6,28 +6,15 @@ class Scatterplot(Setup):
     """Class for setting up scatterplot-analysis
     """
 
-    def __init__(self, stat_analyzer):
+    def __init__(self,**kwargs):
         """Constructor
-
-        Args:
-            stat_analyzer: instance of StatAnalyzer
         """
-        Setup.__init__(self, stat_analyzer)
+
+        Setup.__init__(self,**kwargs)
+
         self.variables_to_plot = []
 
-    def set_columns_to_plot(self,column_name):
-        """Control which columns are to be plotted
-
-        Args:
-            column_name: name of column to add/remove
-        """
-
-        if column_name in self.variables_to_plot:
-            self.variables_to_plot = [x for x in self.variables_to_plot if x != column_name]
-        else:
-            self.variables_to_plot.append(column_name)
-
-    def do_setup(self):
+    def initialize(self):
         """Creates the setup for this analysis
 
         """
@@ -68,3 +55,16 @@ class Scatterplot(Setup):
         col_a = self.variables_to_plot[0]
         col_b = self.variables_to_plot[1]
         self.stat_analyzer.scatterplot(col_a,col_b)
+
+
+    def set_columns_to_plot(self,column_name):
+        """Control which columns are to be plotted
+
+        Args:
+            column_name: name of column to add/remove
+        """
+
+        if column_name in self.variables_to_plot:
+            self.variables_to_plot = [x for x in self.variables_to_plot if x != column_name]
+        else:
+            self.variables_to_plot.append(column_name)

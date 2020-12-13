@@ -1,39 +1,31 @@
-from tkinter import ttk, Tk, messagebox, Menu
+from tkinter import messagebox, Menu
 
-from gui.data_input                       import DataInput
-from misc.load_exampledata                import load_exampledata
-
+from gui.data_input         import DataInput
+from misc.load_exampledata  import load_exampledata
+from gui.homeview           import Homeview
 
 class GUI:
 
-    def __init__(self, StatAnalyzer):
-        window = Tk()
-        window.title("Stat analyzer")
+    def __init__(self,window, StatAnalyzer):
         self.root = window
         self.stat_analyzer = StatAnalyzer
-        self.analyses = self.stat_analyzer.get_available_analyses()
         self.stat_analyzer.set_gui(self)
 
+        self.analyses = self.stat_analyzer.get_available_analyses()
+        self.current_view = None
+
     def start(self):
-        frame = ttk.Frame(master=self.root)
-
-
-        for idx, text in enumerate(self.analyses.keys()):
-            btn = ttk.Button(master=frame, text=text,
-                             command=lambda text=text: self.init_setup(text))
-            btn.grid(row=idx+1, column=0)
-
-        frame.pack()
-
         self.construct_menu()
-
+        self.show_home()
         self.root.mainloop()
 
     def construct_menu(self):
         menu = Menu(self.root)
         self.root.config(menu=menu)
         filemenu = Menu(menu)
+
         menu.add_cascade(label='File', menu=filemenu)
+        menu.add_command(label='Home', command=self.show_home)
 
         filemenu.add_command(label='Load CSV-file..',command=self.open_datainput)
         filemenu.add_command(label='Load exampledata', command=self.load_exampledata)
@@ -49,20 +41,6 @@ class GUI:
     def load_exampledata(self):
         self.stat_analyzer.set_dataset(load_exampledata(gui=self))
 
-    def init_setup(self,analysis_name):
-
-        if not self.stat_analyzer.has_dataset():
-
-            err_msg = 'Error: No dataset.\n'
-            err_msg = err_msg + 'Try loading the example dataset.\n(File -> Load exampledata)'
-
-            messagebox.showerror(title=None,message=err_msg)
-            return
-
-        analysis = self.analyses[analysis_name]
-        setup = analysis(self.stat_analyzer)
-        setup.pack()
-
     def show_warning(self,warningmsg):
         messagebox.showwarning(message=warningmsg)
 
@@ -71,3 +49,38 @@ class GUI:
 
     def ask_are_you_sure(self,question):
         return messagebox.askokcancel(title="Are you sure",message=question)
+
+    def show_setup(self,analysis_name):
+
+        analysis = self.analyses[analysis_name]
+
+        view = analysis(
+            stat_analyzer=self.stat_analyzer,
+            window=self.root,
+            show_error=self.show_error
+        )
+        self.change_view(view)
+
+    def change_view(self,new_view):
+
+        self.hide_current_view()
+        self.current_view = new_view
+        self.current_view.pack()
+
+    def show_home(self):
+
+        view = Homeview(
+            self.root,
+            self.analyses,
+            self.show_setup,
+            self.stat_analyzer,
+            self.show_error
+        )
+        self.change_view(view)
+
+
+    def hide_current_view(self):
+        if self.current_view:
+            self.current_view.destroy()
+
+        self.current_view = None

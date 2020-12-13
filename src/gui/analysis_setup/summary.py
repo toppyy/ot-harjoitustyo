@@ -4,10 +4,9 @@ from gui.setup import Setup
 
 class Summary(Setup):
 
-    def __init__(self, stat_analyzer):
-        Setup.__init__(self, stat_analyzer)
-
-    def do_setup(self):
+    def initialize(self):
+        """Creates the elements for this setup
+        """
 
         lbl = ttk.Label(master=self.frame,
                         text='Choose which variable to summarise')
@@ -20,4 +19,10 @@ class Summary(Setup):
             btn.grid(row=idx+1, column=0)
 
     def analyze(self, column_name):
+        """Runs the analysis task for the chosen column
+
+        Args:
+            column_name: name of the column to be analyzed
+        """
+
         self.display_result(self.stat_analyzer.summary(column_name))
