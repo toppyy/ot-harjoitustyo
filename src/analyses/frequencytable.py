@@ -1,7 +1,7 @@
 from gui.output_elements.table import Table
 from gui.output_elements.header import Header
 
-def frequencytable(column,gui=None):
+def frequencytable(column):
 
     freqs = {}
 
@@ -14,14 +14,6 @@ def frequencytable(column,gui=None):
     for key, value in freqs.items():
         freq_list.append([key,value])
 
-    if len(freq_list)>100:
-
-        msg = "The table has {} elements.".format(len(freq_list))
-        msg = msg+"Are you sure you wish to render it?"
-
-        answer = gui.ask_are_you_sure(msg)
-        if answer is False:
-            return None
 
     results = [
             Header(column["column_name"]),

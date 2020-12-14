@@ -12,3 +12,6 @@ class Text:
 
     def get_text(self):
         return self.text
+
+    def number_of_elements_to_render(self):
+        return 1

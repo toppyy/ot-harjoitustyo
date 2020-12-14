@@ -71,7 +71,7 @@ class StatAnalyzer:
             Output of frequency table-analysis
         """
         data = self.dataset.get_column(column)
-        return frequencytable(data,self.gui)
+        return frequencytable(data)
 
     def barplot(self,column):
         """Create barplot

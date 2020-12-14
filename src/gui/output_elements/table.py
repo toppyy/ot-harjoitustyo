@@ -26,3 +26,6 @@ class Table:
                 cells.append(cell)
 
         return cells
+
+    def number_of_elements_to_render(self):
+        return len(self.data)
