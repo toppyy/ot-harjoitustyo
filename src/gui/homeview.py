@@ -25,9 +25,12 @@ class Homeview:
         self.frame = ttk.Frame(master=self.root)
 
         for idx, text in enumerate(self.analyses.keys()):
-            btn = ttk.Button(master=self.frame, text=text,
-                             command=lambda text=text: self.consider_setup(text))
-            btn.grid(row=idx+1, column=0)
+            btn = ttk.Button(
+                                master=self.frame,
+                                text=text,
+                                command=lambda text=text: self.consider_setup(text)
+                            )
+            btn.grid(row=idx+1, column=0,padx=20,pady=4)
 
     def destroy(self):
         """Destroy the frame
