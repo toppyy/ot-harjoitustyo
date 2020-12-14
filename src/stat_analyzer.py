@@ -1,16 +1,18 @@
 import matplotlib.pyplot as plt
 
-from analyses.summary        import summary
-from analyses.frequencytable import frequencytable
-from analyses.summarytable   import summarytable
-from analyses.scatterplot    import scatterplot
-from analyses.barplot        import barplot
+from analyses.summary           import summary
+from analyses.frequencytable    import frequencytable
+from analyses.summarytable      import summarytable
+from analyses.scatterplot       import scatterplot
+from analyses.barplot           import barplot
+from analyses.varianceanalysis  import varianceanalysis
 
-from gui.analysis_setup.summary           import Summary
-from gui.analysis_setup.frequencytable    import Frequencytable
-from gui.analysis_setup.summarytable      import Summarytable
-from gui.analysis_setup.scatterplot       import Scatterplot
-from gui.analysis_setup.barplot           import Barplot
+from gui.analysis_setup.summary             import Summary
+from gui.analysis_setup.frequencytable      import Frequencytable
+from gui.analysis_setup.summarytable        import Summarytable
+from gui.analysis_setup.scatterplot         import Scatterplot
+from gui.analysis_setup.barplot             import Barplot
+from gui.analysis_setup.varianceanalysis    import Varianceanalysis
 
 class StatAnalyzer:
     """Class for controlling the statistical analysis tasks
@@ -44,7 +46,8 @@ class StatAnalyzer:
             "Frequency table": Frequencytable,
             "Summary table": Summarytable,
             "Scatterplot": Scatterplot,
-            "Barplot": Barplot
+            "Barplot": Barplot,
+            "Varianceanalysis": Varianceanalysis
         }
 
         return analyses
@@ -89,7 +92,8 @@ class StatAnalyzer:
         """Run summary table-analysis tasks
 
         Args:
-            column: Name of column to analyze
+            column_to_summarise_by: Name of column to group observations by
+            column_to_summarise: Name of column to summarise
 
         Returns:
             Output of summary table-analysis
@@ -97,6 +101,20 @@ class StatAnalyzer:
         data_summarise_by   = self.dataset.get_column(column_to_summarise_by)
         data_summarise      = self.dataset.get_column(column_to_summarise)
         return summarytable(data_summarise_by,data_summarise)
+
+    def varianceanalysis(self, column_to_group_by,column_to_analyse):
+        """Run varianceanalysis task
+
+        Args:
+            column_to_group_by: Name of column to group observations by
+            column_to_analyze: Name of column to analyze
+
+        Returns:
+            Output of summary table-analysis
+        """
+        data_group_by       = self.dataset.get_column(column_to_group_by)
+        data_summarise      = self.dataset.get_column(column_to_analyse)
+        return varianceanalysis(data_group_by,data_summarise)
 
     def scatterplot(self, column_name_a, column_name_b):
         """Create scatterplot
