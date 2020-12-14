@@ -1,7 +1,7 @@
 
 # Timesheet
 
-Total hours spent **29**
+Total hours spent **31**
 
 | date | hours spent | doing what  |
 | :----:|:-----| :-----|
@@ -22,3 +22,4 @@ Total hours spent **29**
 | 8.12  | 4    | Refactor, docstring, test, barplot |
 | 9.12  | 2    | Plot test, freq.table warns |
 | 13.12 | 2    | Single window for home and setup views |
+| 14.12 | 2    | Separate gui from app logic, ANOVA |
