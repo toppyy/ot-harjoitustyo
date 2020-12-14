@@ -39,13 +39,11 @@ class TestStatAnalyzer(unittest.TestCase):
 
         freqtable = self.stat_analyzer.frequencytable("col1")
 
-        cells = freqtable[1] # Get Table 
+        cells = freqtable[1]
 
-        # The fourth cell is the number of A's. 
-        # Two first cells are the headers. Third cell is "A".
-        numberOfAs = cells.get_output(None,1)[3]
+        number_of_As = cells[1][1]
 
-        self.assertEqual('10', numberOfAs.get())
+        self.assertEqual(10, number_of_As)
 
 
     def test_summarytable(self):

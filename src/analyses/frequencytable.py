@@ -1,5 +1,3 @@
-from gui.output_elements.table import Table
-from gui.output_elements.header import Header
 
 def frequencytable(column):
 
@@ -16,8 +14,8 @@ def frequencytable(column):
 
 
     results = [
-            Header(column["column_name"]),
-            Table(freq_list)
+            column["column_name"],
+            freq_list
     ]
 
     return results

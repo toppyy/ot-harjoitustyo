@@ -1,6 +1,7 @@
 from tkinter import ttk
 from gui.setup import Setup
-
+from gui.output_elements.table import Table
+from gui.output_elements.header import Header
 
 class Frequencytable(Setup):
 
@@ -24,4 +25,10 @@ class Frequencytable(Setup):
             columntype.grid(row=idx+1, column=1)
 
     def analyze(self, column_name):
-        self.display_result(self.stat_analyzer.frequencytable(column_name))
+        analysis_result = self.stat_analyzer.frequencytable(column_name)
+        self.display_result(
+            [
+                Header(analysis_result[0]),
+                Table(analysis_result[1])
+            ]
+        )
