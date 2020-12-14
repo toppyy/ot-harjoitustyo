@@ -51,11 +51,9 @@ class TestStatAnalyzer(unittest.TestCase):
 
         summarytable = self.stat_analyzer.summarytable("col1","col0")
 
-        cells = summarytable[1] # Get Table 
+        stats = summarytable[1]
 
-        # Four first cells are the headers. Fifth cell is "A".
-        stats = cells.get_output(None,1)[5:8]
-
-        self.assertEqual('10', stats[0].get())                          # Count
-        self.assertAlmostEqual(61.58, float(stats[1].get()), places=2)  # Mean
-        self.assertAlmostEqual(59.2, float(stats[2].get()),places=1)    # Median
+        self.assertEqual('A',stats[0])                     # Group value
+        self.assertEqual(10, stats[1])                     # Count
+        self.assertAlmostEqual(61.58, stats[2], places=2)  # Mean
+        self.assertAlmostEqual(59.2,  stats[3], places=1)  # Median

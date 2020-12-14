@@ -1,7 +1,6 @@
 from math_helper.mean import mean
 from math_helper.median import median
-from gui.output_elements.header import Header
-from gui.output_elements.table  import Table
+
 
 def summarytable(column_to_summarise_by,column_to_summarise):
 
@@ -33,11 +32,7 @@ def summarytable(column_to_summarise_by,column_to_summarise):
         arr.extend(value)
         stats_as_list.append(arr)
 
-    header = column_to_summarise_by["column_name"] + '\nvs.\n' + column_to_summarise["column_name"]
 
-    results = [
-            Header(header),
-            Table(stats_as_list)
-    ]
+    results = stats_as_list
 
     return results

@@ -1,6 +1,7 @@
 from tkinter import ttk, Radiobutton, IntVar, messagebox
 from gui.setup import Setup
-
+from gui.output_elements.header import Header
+from gui.output_elements.table  import Table
 class Summarytable(Setup):
 
 
@@ -25,8 +26,6 @@ class Summarytable(Setup):
     def initialize(self):
         """Creates the elements for this setup
         """
-
-
         # which variable to summarise by
 
         lbl = ttk.Label(master=self.frame,
@@ -71,4 +70,11 @@ class Summarytable(Setup):
             messagebox.showerror(message="Choose which variable to summarise by!")
             return
 
-        self.display_result(self.stat_analyzer.summarytable(self.summarise_by,column_name))
+        analysis_result = self.stat_analyzer.summarytable(self.summarise_by,column_name)
+        header = self.summarise_by + '\nvs.\n' + column_name
+
+
+        self.display_result([
+            Header(header),
+            Table(analysis_result)
+        ])
