@@ -28,7 +28,7 @@ class Frequencytable(Setup):
         analysis_result = self.stat_analyzer.frequencytable(column_name)
         self.display_result(
             [
-                Header(analysis_result[0]),
-                Table(analysis_result[1])
+                Header(column_name),
+                Table(analysis_result)
             ]
         )

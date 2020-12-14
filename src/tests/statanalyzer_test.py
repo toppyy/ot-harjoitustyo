@@ -37,16 +37,15 @@ class TestStatAnalyzer(unittest.TestCase):
         self.assertAlmostEqual(53.0 , median, places=decimals)
         self.assertAlmostEqual(16.87, stdev, places=decimals)
 
-    def test_frequencytable(self):
+    def test_frequencytable_count(self):
 
         freqtable = self.stat_analyzer.frequencytable("col1")
 
-        cells = freqtable[1]
-
-        number_of_aletter_a = cells[1][1]
+        number_of_aletter_a = freqtable[1][1]
 
         self.assertEqual(10, number_of_aletter_a)
 
+        
 
     def test_summarytable(self):
 

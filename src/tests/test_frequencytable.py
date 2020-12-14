@@ -7,20 +7,20 @@ from test_helpers.pseudo_gui import PseudoGUI
 class TestFrequencytable(unittest.TestCase):
 
     def setUp(self):
-        self.gui = PseudoGUI()
-
-    def test_freqtable_works(self):
-
-        column = {
+        self.column = {
             "data": ['A','B','A','C','B','A','A'],
             "column_name": "letters"
         }
 
-        result = frequencytable(column)
+    def test_freqtable_works(self):
 
-        header = result[0]
-        table  = result[1]
+        table = frequencytable(self.column)
+        self.assertEqual(4,table[1][1])
+
+
+    def test_frequencytable_dimensions(self):
+
+        table = frequencytable(self.column)
 
         self.assertEqual(4,len(table))
-        self.assertEqual(4,table[1][1])
-        self.assertEqual('letters',header)
+        self.assertEqual(2,len(table[0]))

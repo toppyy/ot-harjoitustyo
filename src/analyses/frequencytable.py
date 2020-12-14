@@ -12,10 +12,4 @@ def frequencytable(column):
     for key, value in freqs.items():
         freq_list.append([key,value])
 
-
-    results = [
-            column["column_name"],
-            freq_list
-    ]
-
-    return results
+    return freq_list
