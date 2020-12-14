@@ -27,13 +27,15 @@ class TestStatAnalyzer(unittest.TestCase):
 
         summaryresult = self.stat_analyzer.summary("col0")
 
-        median = summaryresult[1].get_text()
-        mean   = summaryresult[2].get_text()
-        stdev  = summaryresult[3].get_text()
+        median = summaryresult[0]
+        mean   = summaryresult[1]
+        stdev  = summaryresult[2]
 
-        self.assertIn(   '54.67', mean   ) # Eg. "Mean: 54.67" is expected
-        self.assertIn(   '53.0' , median )
-        self.assertIn(   '16.87', stdev  )
+        decimals = 2
+
+        self.assertAlmostEqual(54.67, mean, places=decimals)
+        self.assertAlmostEqual(53.0 , median, places=decimals)
+        self.assertAlmostEqual(16.87, stdev, places=decimals)
 
     def test_frequencytable(self):
 
@@ -41,9 +43,9 @@ class TestStatAnalyzer(unittest.TestCase):
 
         cells = freqtable[1]
 
-        number_of_As = cells[1][1]
+        number_of_aletter_a = cells[1][1]
 
-        self.assertEqual(10, number_of_As)
+        self.assertEqual(10, number_of_aletter_a)
 
 
     def test_summarytable(self):

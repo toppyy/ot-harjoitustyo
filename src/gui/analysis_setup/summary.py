@@ -1,5 +1,7 @@
 from tkinter import ttk
 from gui.setup import Setup
+from gui.output_elements.header import Header
+from gui.output_elements.text   import Text
 
 
 class Summary(Setup):
@@ -25,4 +27,13 @@ class Summary(Setup):
             column_name: name of the column to be analyzed
         """
 
-        self.display_result(self.stat_analyzer.summary(column_name))
+        analysis_result = self.stat_analyzer.summary(column_name)
+
+        output = [
+            Header(column_name),
+            Text( "Median: {}".format(analysis_result[0]) ),
+            Text( "Mean:   {}".format(analysis_result[1]) ),
+            Text( "Std.dev: {}".format(analysis_result[2] ) )
+        ]
+
+        self.display_result(output)
