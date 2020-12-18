@@ -23,3 +23,4 @@ Total hours spent **31**
 | 9.12  | 2    | Plot test, freq.table warns |
 | 13.12 | 2    | Single window for home and setup views |
 | 14.12 | 2    | Separate gui from app logic, ANOVA |
+| 18.12 | 2    | ANOVA p-value and test |

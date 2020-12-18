@@ -81,5 +81,6 @@ class Varianceanalysis(Setup):
             Text('Sum of squares within: {}'.format(analysis_result[1])),
             Text('Mean sum of squares between: {}'.format(analysis_result[2])),
             Text('Mean sum of squares within: {}'.format(analysis_result[3])),
-            Text('F-statistic: {}'.format(analysis_result[4]))
+            Text('F-statistic: {}'.format(analysis_result[4])),
+            Text('P-value: {}'.format(analysis_result[5]))
         ])

@@ -1,5 +1,6 @@
 from analyses.summarytable  import summarytable
 from math_helper.mean       import mean
+from scipy.stats import f
 
 def varianceanalysis(column_to_group_by,column_to_analyse):
 
@@ -20,7 +21,9 @@ def varianceanalysis(column_to_group_by,column_to_analyse):
         between_groups.append(stat)
 
     ss_between_groups = sum(between_groups)
-    ms_between = ss_between_groups / ( len(summary_by_group)-1 )
+
+    dfn = ( len(summary_by_group)-1 )
+    ms_between = ss_between_groups / dfn
 
     # terrible, but will do for now
     groups = {}
@@ -39,15 +42,19 @@ def varianceanalysis(column_to_group_by,column_to_analyse):
         diff = [(x-group_mean)**2 for x in obs]
         ss_within = ss_within + sum(diff)
 
-    ms_within = ss_within / ( len(analyse_data) - len(summary_by_group) )
-
+    dfd = ( len(analyse_data) - len(summary_by_group) )
+    ms_within = ss_within / dfd
 
     F_statistic = ms_between/ms_within
+
+    pvalue = 1 - f.cdf(F_statistic, dfn, dfd)
+
 
     return [
         ss_between_groups,
         ss_within,
         ms_between,
         ms_within,
-        F_statistic
+        F_statistic,
+        pvalue
     ]
