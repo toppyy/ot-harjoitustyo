@@ -6,6 +6,7 @@ from analyses.summarytable      import summarytable
 from analyses.scatterplot       import scatterplot
 from analyses.barplot           import barplot
 from analyses.varianceanalysis  import varianceanalysis
+from analyses.ttest             import ttest
 
 from gui.analysis_setup.summary             import Summary
 from gui.analysis_setup.frequencytable      import Frequencytable
@@ -13,6 +14,7 @@ from gui.analysis_setup.summarytable        import Summarytable
 from gui.analysis_setup.scatterplot         import Scatterplot
 from gui.analysis_setup.barplot             import Barplot
 from gui.analysis_setup.varianceanalysis    import Varianceanalysis
+from gui.analysis_setup.ttest               import Ttest
 
 class StatAnalyzer:
     """Class for controlling the statistical analysis tasks
@@ -47,7 +49,8 @@ class StatAnalyzer:
             "Summary table": Summarytable,
             "Scatterplot": Scatterplot,
             "Barplot": Barplot,
-            "Varianceanalysis": Varianceanalysis
+            "Varianceanalysis": Varianceanalysis,
+            "T-test": Ttest
         }
 
         return analyses
@@ -115,6 +118,19 @@ class StatAnalyzer:
         data_group_by       = self.dataset.get_column(column_to_group_by)
         data_summarise      = self.dataset.get_column(column_to_analyse)
         return varianceanalysis(data_group_by,data_summarise)
+
+
+    def ttest(self, column_to_analyse, population_mean):
+        """Run t-test
+
+        Args:
+            column_to_analyse: column to test
+            population_mean: population mean to test against
+        """
+
+        data = self.dataset.get_column(column_to_analyse)
+        return ttest(data,population_mean)
+
 
     def scatterplot(self, column_name_a, column_name_b):
         """Create scatterplot

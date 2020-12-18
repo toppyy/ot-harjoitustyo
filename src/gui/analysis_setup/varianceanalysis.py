@@ -52,7 +52,7 @@ class Varianceanalysis(Setup):
         # which variable to analyze variance
 
         lbl = ttk.Label(master=self.frame,
-                        text='Choose which which variable to analyse')
+                        text='Choose which variable to analyse')
         lbl.grid(row=objects + 1, column=0)
         objects = objects + 1
 
