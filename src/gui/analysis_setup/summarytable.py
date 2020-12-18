@@ -73,8 +73,11 @@ class Summarytable(Setup):
         analysis_result = self.stat_analyzer.summarytable(self.summarise_by,column_name)
         header = self.summarise_by + '\nvs.\n' + column_name
 
+        to_display = [['Value','Count','Mean','Median']] # Headers
+        to_display.extend(analysis_result)
+
 
         self.display_result([
             Header(header),
-            Table(analysis_result)
+            Table(to_display)
         ])

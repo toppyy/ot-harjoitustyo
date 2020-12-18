@@ -26,9 +26,13 @@ class Frequencytable(Setup):
 
     def analyze(self, column_name):
         analysis_result = self.stat_analyzer.frequencytable(column_name)
+
+        to_display = [('Value','Count')]
+        to_display.extend(analysis_result)
+
         self.display_result(
             [
                 Header(column_name),
-                Table(analysis_result)
+                Table(to_display)
             ]
         )

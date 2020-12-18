@@ -51,7 +51,7 @@ class TestStatAnalyzer(unittest.TestCase):
 
         summarytable = self.stat_analyzer.summarytable("col1","col0")
 
-        stats = summarytable[1]
+        stats = summarytable[0]
 
         self.assertEqual('A',stats[0])                     # Group value
         self.assertEqual(10, stats[1])                     # Count

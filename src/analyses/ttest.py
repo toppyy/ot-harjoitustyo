@@ -5,6 +5,15 @@ from math_helper.variance import variance
 
 
 def ttest(column,population_mean):
+    """Calculates a two-way t-test
+
+    Args:
+        column: column to test
+        population_mean: the mean to test agains
+
+    Returns:
+        A list of test statistics
+    """
 
 
     data = column['data']

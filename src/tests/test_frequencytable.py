@@ -15,12 +15,12 @@ class TestFrequencytable(unittest.TestCase):
     def test_freqtable_works(self):
 
         table = frequencytable(self.column)
-        self.assertEqual(4,table[1][1])
+        self.assertEqual(4,table[0][1])
 
 
     def test_frequencytable_dimensions(self):
 
         table = frequencytable(self.column)
 
-        self.assertEqual(4,len(table))
+        self.assertEqual(3,len(table))
         self.assertEqual(2,len(table[0]))

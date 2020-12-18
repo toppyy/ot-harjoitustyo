@@ -3,14 +3,21 @@ from math_helper.mean       import mean
 from scipy.stats import f
 
 def varianceanalysis(column_to_group_by,column_to_analyse):
+    """Analysis of variance
+
+    Args:
+        column_to_group_by: the column describing groups to compare
+        column_to_analyse: column for the data to use in comparison
+
+    Returns:
+        A list of test statistics
+    """
 
 
     group_by_data = column_to_group_by['data']
     analyse_data  = column_to_analyse['data']
 
     summary_by_group = summarytable(column_to_group_by,column_to_analyse)
-
-    summary_by_group.pop(0) # Remove headers
 
     group_means = [x[2] for x in summary_by_group]
     total_mean  = mean(analyse_data)
