@@ -11,5 +11,7 @@ dirname = dirname.parent
 
 def get_database_connection(filename='datasets.sqlite'):
     dbfilename  = os.path.join(dirname, "data", filename)
+    if filename == ":memory:":
+        dbfilename = filename
     connection = sqlite3.connect(dbfilename)
     return connection
