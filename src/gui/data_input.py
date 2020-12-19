@@ -1,3 +1,4 @@
+import re
 from tkinter import ttk, Tk, filedialog, Radiobutton, BooleanVar
 from file_access import FileAccess
 from dataset import Dataset
@@ -6,18 +7,21 @@ class DataInput:
     """Class responsible for the view controlling loading datasets
     """
 
-    def __init__(self, set_dataset, gui):
+    def __init__(self, set_dataset, gui, callback):
         """Constructor
 
         Args:
             set_dataset: function to be called once the dataset is created
             gui: reference to the gui creating the instance
+            callback: function that is with the parameters for reading data
         """
 
         self.path = filedialog.askopenfilename()
         self.window = Tk()
         self.has_header = BooleanVar(self.window)
         self.has_header.set(True) # Default
+
+        self.callback = callback
 
         self.set_dataset = set_dataset
         self.delimiter = None
@@ -85,4 +89,13 @@ class DataInput:
 
         self.set_dataset(data)
 
+        filename_match = re.search('[a-z_]+\.csv',path)
+
+        self.callback({
+                'fullpath': path,
+                'filename': filename_match.group(),
+                'delimiter': delimiter,
+                'row_limit': row_limit,
+                'has_header': has_header
+            })
         self.window.destroy()

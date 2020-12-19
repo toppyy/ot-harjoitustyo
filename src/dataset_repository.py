@@ -81,3 +81,22 @@ class DatasetRepository:
             parameters.append(parameter)
 
         return parameters
+
+    def get_10_recent_datasets(self):
+        """Returns ten most recent dataset parameters
+
+        Returns:
+            A list of dataset parameters
+        """
+        cursor = self.dbcon.cursor()
+
+        parameters = []
+        for row in cursor.execute('SELECT * FROM datasets ORDER BY id DESC LIMIT 10;'):
+
+            parameter = {
+                "id": row[0],
+                "parameters": json.loads(row[1])
+            }
+            parameters.append(parameter)
+
+        return parameters

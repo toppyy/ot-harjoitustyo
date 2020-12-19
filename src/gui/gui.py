@@ -6,10 +6,11 @@ from gui.homeview           import Homeview
 
 class GUI:
 
-    def __init__(self,window, StatAnalyzer):
+    def __init__(self,window, stat_analyzer, dataset_repository):
         self.root = window
-        self.stat_analyzer = StatAnalyzer
+        self.stat_analyzer = stat_analyzer
         self.stat_analyzer.set_gui(self)
+        self.dataset_repository = dataset_repository
 
         self.analyses = self.stat_analyzer.get_available_analyses()
         self.current_view = None
@@ -31,12 +32,34 @@ class GUI:
         filemenu.add_command(label='Load exampledata', command=self.load_exampledata)
 
         filemenu.add_separator()
+        self.add_recent_datasets_to_menu(filemenu)
+
+        filemenu.add_separator()
         filemenu.add_command(label='Exit', command=self.root.quit)
 
+    def add_recent_datasets_to_menu(self,filemenu):
+
+        submenu = Menu(filemenu)
+
+        datasets = self.dataset_repository.get_10_recent_datasets()
+
+        for dataset in datasets:
+            params = dataset['parameters']
+            submenu.add_command(label=params['filename'])
+
+        filemenu.add_cascade(label='Recent datasets..', menu=submenu, underline=0)
+
+    def store_dataset_and_refresh_menu(self,parameters):
+        self.dataset_repository.store_dataset_parameters(parameters)
+        self.construct_menu()
 
     def open_datainput(self):
 
-        DataInput(self.stat_analyzer.set_dataset, gui=self)
+        DataInput(
+            set_dataset=self.stat_analyzer.set_dataset,
+            gui=self,
+            callback=self.store_dataset_and_refresh_menu
+        )
 
     def load_exampledata(self):
         self.stat_analyzer.set_dataset(load_exampledata(gui=self))
