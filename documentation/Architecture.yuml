@@ -3,3 +3,4 @@
 [GUI]1-0..*1[Setup]
 [Setup]-[StatAnalyzer]
 [Setup]-[Output]
+[GUI]-[DatasetRepository]

@@ -8,8 +8,6 @@ python3 -m pipenv install
 python3 -m pipenv run start
 ```
 
-
-
 ## 2. Start by choosing the file to analyze
 
 1. The application starts in the main view

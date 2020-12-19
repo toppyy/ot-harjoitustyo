@@ -4,15 +4,16 @@ The application provides an access to simple statistical analysis for text files
 
 ## Releases
 
-* [Week 6](https://github.com/toppyy/ot-harjoitustyo/releases/tag/week6)
-* [Week 5](https://github.com/toppyy/ot-harjoitustyo/releases/viikko5)
+* [Week 6](./releases/tag/week6)
+* [Week 5](./releases/viikko5)
 
 ## Documentation
 
-* [Requirements](https://github.com/toppyy/ot-harjoitustyo/blob/master/documentation/Requirements.md)
-* [Timesheet](https://github.com/toppyy/ot-harjoitustyo/blob/master/documentation/Timesheet.md)
-* [Architecture](https://github.com/toppyy/ot-harjoitustyo/blob/master/documentation/Architecture.md)
-* [User guide](https://github.com/toppyy/ot-harjoitustyo/blob/master/documentation/UserGuide.md)
+* [Requirements](./documentation/Requirements.md)
+* [Timesheet](./documentation/Timesheet.md)
+* [Architecture](./documentation/Architecture.md)
+* [User guide](./documentation/UserGuide.md)
+* [Testing](./documentation/Testing.md)
 
 ## Setup and running the application
 
