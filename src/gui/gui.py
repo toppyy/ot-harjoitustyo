@@ -46,8 +46,12 @@ class GUI:
     def add_recent_datasets_to_menu(self,filemenu):
 
         submenu = Menu(filemenu)
-
-        datasets = self.dataset_repository.get_10_recent_datasets()
+        try:
+            datasets = self.dataset_repository.get_10_recent_datasets()
+        except Exception as err:
+            msg = 'Recent datasets could not be loaded. Running build might help. (Err: {})'.format(err)
+            self.show_error(msg)
+            return
 
         for dataset in datasets:
             params = dataset['parameters']
@@ -69,12 +73,17 @@ class GUI:
         self.show_home()
 
     def store_dataset_and_refresh_menu(self,parameters):
-        self.dataset_repository.store_dataset_parameters(parameters)
-        self.construct_menu()
+        try:
+            self.dataset_repository.store_dataset_parameters(parameters)
+            self.construct_menu()
+        except Exception as err:
+            msg = 'Dataset could not stored. Running build might help. (Err: {})'.format(err)
+            self.show_error(msg)
+            return
 
     def open_datainput(self):
         self.data_input.init()
-        
+
     def load_exampledata(self):
         self.stat_analyzer.set_dataset(load_exampledata(gui=self))
 
