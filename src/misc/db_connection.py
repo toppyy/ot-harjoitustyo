@@ -7,11 +7,9 @@ dirname = Path(os.path.dirname(__file__))
 dirname = dirname.parent
 dirname = dirname.parent
 
-dbfilename  = os.path.join(dirname, "data", "datasets.sqlite")
 
 
-connection = sqlite3.connect(dbfilename)
-
-
-def get_database_connection():
+def get_database_connection(filename='datasets.sqlite'):
+    dbfilename  = os.path.join(dirname, "data", filename)
+    connection = sqlite3.connect(dbfilename)
     return connection

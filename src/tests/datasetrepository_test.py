@@ -1,8 +1,9 @@
 import unittest
 from dataset_repository import DatasetRepository
 from misc.db_connection import get_database_connection
-
-connection = get_database_connection()
+from misc.init_db       import initialize_database
+connection = get_database_connection('datasets_test.sqlite')
+initialize_database(connection)
 dataset_repo = DatasetRepository(connection)
 
 

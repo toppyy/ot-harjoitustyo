@@ -22,8 +22,13 @@ The application provides an access to simple statistical analysis for text files
 ```bash
 python3 -m pipenv install
 ```
+2. Build the app
 
-2. To run the application
+```bash
+python3 -m pipenv run build
+```
+
+3. To run the application
 ```bash
 python3 -m pipenv run start
 ```

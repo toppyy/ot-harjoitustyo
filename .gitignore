@@ -7,5 +7,5 @@
 .coverage
 htmlcov/
 /temp
-/data/datasets.sqlite
+/data/*.sqlite
 /src/misc/__pycache__/
