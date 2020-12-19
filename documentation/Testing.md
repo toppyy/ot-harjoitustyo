@@ -11,6 +11,8 @@ Notes regarding unit and integration tests:
 - Functions that create plots are tested by injecting a fake reference to the library that creates the plot. The tests test that the plotting function is called with the correct arguments. The plotting itself is assumed to work.
 - Tests for classes `FileAccess` and `DataSet` depend on `./data/iris.csv`.
 
+## Test coverage
+![coverage](coverage.png)
 ## Functionality
 
 All the of app functionality was tested manually trough the UI. 
