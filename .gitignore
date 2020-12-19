@@ -8,3 +8,4 @@
 htmlcov/
 /temp
 /data/datasets.sqlite
+/src/misc/__pycache__/
