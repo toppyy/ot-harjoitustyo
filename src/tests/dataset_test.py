@@ -6,7 +6,7 @@ from test_helpers.pseudo_gui import PseudoGUI
 class TestDataset(unittest.TestCase):
 
     def setUp(self):
-        path = './data/tyovoimakunnittain.csv'
+        path = './data/iris.csv'
         self.rows = FileAccess().read_csv(path, ";", '"')
         self.dataset = Dataset(  self.rows  )
         self.dataset.gui = PseudoGUI()
@@ -18,7 +18,7 @@ class TestDataset(unittest.TestCase):
 
         rowcount = dataset.get_rowcount()
 
-        self.assertEqual(rowcount, 310)
+        self.assertEqual(rowcount, 150)
 
     def test_dataset_creation_without_headers(self):
 
@@ -27,7 +27,7 @@ class TestDataset(unittest.TestCase):
 
         rowcount = dataset.get_rowcount()
 
-        self.assertEqual(rowcount, 311)
+        self.assertEqual(rowcount, 151)
 
 
     def test_column_sets(self):
@@ -44,7 +44,7 @@ class TestDataset(unittest.TestCase):
 
         self.dataset.create(has_header=True)
         nonnumeric_columns  = self.dataset.get_nonnumeric_column_names()
-        self.assertEqual(['alue'], nonnumeric_columns)
+        self.assertEqual(['Species'], nonnumeric_columns)
 
 
     def test_convert_to_works(self):

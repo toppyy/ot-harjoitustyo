@@ -6,10 +6,10 @@ class TestFileAccess(unittest.TestCase):
 
     def test_csv_read(self):
 
-        path = './data/sepelvaltimo_korvausoikeus.csv'
+        path = './data/iris.csv'
         rows = FileAccess().read_csv(path, ";", '"')
 
-        first_row = 'aluekoodi;maakunta;vaesto65_84;sepelvaltimotauti_korv_oikeus;sepelvaltimotauti_korv_oikeus_osuus'
+        first_row = 'Sepal.Length;Sepal.Width;Petal.Length;Petal.Width;Species'
 
         self.assertEqual(first_row,';'.join(rows[0]))
 
@@ -17,7 +17,7 @@ class TestFileAccess(unittest.TestCase):
 
         rows_to_read = 12
 
-        path = './data/sepelvaltimo_korvausoikeus.csv'
+        path = './data/iris.csv'
         rows = FileAccess().read_csv(path, ";", '"', row_limit=12)
 
         self.assertEqual(rows_to_read, len(rows))

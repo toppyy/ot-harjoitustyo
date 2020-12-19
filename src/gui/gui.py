@@ -9,7 +9,6 @@ class GUI:
     def __init__(self,window, stat_analyzer, dataset_repository):
         self.root = window
         self.stat_analyzer = stat_analyzer
-        self.stat_analyzer.set_gui(self)
         self.dataset_repository = dataset_repository
 
         self.analyses = self.stat_analyzer.get_available_analyses()

@@ -21,7 +21,6 @@ class Dataset:
         self.dataset = None
         self.column_names = None
         self.column_types = []
-        self.gui = None
 
 
     def create_column_names(self,has_header):
@@ -41,16 +40,13 @@ class Dataset:
 
         return column_names
 
-    def create(self, has_header=True, gui=None):
+    def create(self, has_header=True):
         """ Stores the data as columns instead of rows and stores column names
             Data is stored in a dict. The key is the column name.
 
         Args:
             has_header (bool, optional): True if the dataset has a header row. Defaults to True.
-            gui: Reference to the main class controlling the GUI
         """
-
-        self.gui = gui
 
         if self.rows is None:
             return
@@ -90,23 +86,24 @@ class Dataset:
         """
 
         try:
-            return {
-                "data": convert_to(data,target_type),
-                "coltype": target_type
-            }
-        except ValueError:
+
+            data = convert_to(data,target_type)
+            result_type = target_type
+
+        except ValueError as err:
 
             error_msg = 'Error converting column {} to {}'.format(column_name,target_type)
             error_msg = error_msg + '\nReturning column as str.'
 
-            self.gui.show_warning(error_msg)
-
             result_type='str'
+            print(error_msg)
 
-        return {
-            "data": data,
-            "coltype": result_type
-        }
+        finally:
+
+            return {
+                "data": data,
+                "coltype": result_type
+            }
 
 
 

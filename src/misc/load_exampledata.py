@@ -4,7 +4,6 @@ from dataset import Dataset
 
 def load_exampledata(gui=None):
     path = './data/iris.csv'
-    data = Dataset(FileAccess().read_csv(path,";",gui=gui))
-    data.create(gui=gui)
-
+    data = Dataset(FileAccess().read_csv(path,";"))
+    data.create()
     return data

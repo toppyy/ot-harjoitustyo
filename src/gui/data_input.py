@@ -84,8 +84,13 @@ class DataInput:
         delimiter = self.delimiter.get()
         has_header = self.has_header.get()
 
-        data = Dataset(FileAccess().read_csv(path, delimiter, '"', row_limit, self.gui))
-        data.create(has_header=has_header, gui=self.gui)
+        try:
+            data = Dataset(FileAccess().read_csv(path, delimiter, '"', row_limit))
+        except Exception as err:
+            self.gui.show_warning(str(err))
+            return
+
+        data.create(has_header=has_header)
 
         self.set_dataset(data)
 

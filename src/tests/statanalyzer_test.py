@@ -1,7 +1,6 @@
 import unittest
 from stat_analyzer import StatAnalyzer
 from dataset import Dataset
-from test_helpers.pseudo_gui import PseudoGUI
 from analyses_config import get_analyses_config
 
 # Helper to create data for testing
@@ -22,7 +21,6 @@ class TestStatAnalyzer(unittest.TestCase):
         testdataset.create(has_header=False)
 
         self.stat_analyzer = StatAnalyzer(testdataset)
-        self.stat_analyzer.set_gui(PseudoGUI())
 
         self.analyses = get_analyses_config()
 
