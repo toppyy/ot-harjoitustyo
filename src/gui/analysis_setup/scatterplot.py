@@ -54,7 +54,8 @@ class Scatterplot(Setup):
 
         col_a = self.variables_to_plot[0]
         col_b = self.variables_to_plot[1]
-        self.stat_analyzer.scatterplot(col_a,col_b)
+        self.stat_analyzer.analyse(self.analysis,[col_a,col_b],self.analysis['plotlibrary'])
+
 
 
     def set_columns_to_plot(self,column_name):

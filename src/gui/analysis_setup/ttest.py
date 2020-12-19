@@ -72,7 +72,7 @@ class Ttest(Setup):
             messagebox.showerror(message="Enter a valid number as population mean!")
             return
 
-        analysis_result = self.stat_analyzer.ttest(column_name,pop_mean)
+        analysis_result = self.stat_analyzer.analyse(self.analysis,[column_name],pop_mean)
         header = column_name
 
 

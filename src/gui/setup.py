@@ -7,7 +7,6 @@ class Setup:
     """Generic parent class for views setting up analysis tasks
     """
 
-    #def __init__(self, stat_analyzer, window, show_error):
     def __init__(self,**kwargs):
         """Constructor
 
@@ -15,6 +14,7 @@ class Setup:
             stat_analyzer: reference to an instance of class StatAnalyzer
             window: window to bind frame to
             show_error: function to call when error occurs with error message
+            analysis: dict for the specific analysis
         """
         self.frame = None
         self.window = kwargs['window']
@@ -23,6 +23,8 @@ class Setup:
         self.show_error = kwargs['show_error']
 
         self.frame = ttk.Frame(master=self.window)
+        self.analysis = kwargs['analysis']
+
         self.initialize()
 
     def display_result(self, result):

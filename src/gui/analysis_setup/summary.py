@@ -27,7 +27,7 @@ class Summary(Setup):
             column_name: name of the column to be analyzed
         """
 
-        analysis_result = self.stat_analyzer.summary(column_name)
+        analysis_result = self.stat_analyzer.analyse(self.analysis,[column_name])
 
         output = [
             Header(column_name),

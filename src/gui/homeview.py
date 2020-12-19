@@ -24,11 +24,14 @@ class Homeview:
 
         self.frame = ttk.Frame(master=self.root)
 
-        for idx, text in enumerate(self.analyses.keys()):
+        for idx, key in enumerate(self.analyses.keys()):
+
+            analysis = self.analyses[key]
+
             btn = ttk.Button(
                                 master=self.frame,
-                                text=text,
-                                command=lambda text=text: self.consider_setup(text)
+                                text=analysis['displayname'],
+                                command=lambda key=key: self.consider_setup(key)
                             )
             btn.grid(row=idx+1, column=0,padx=20,pady=4)
 
@@ -43,16 +46,16 @@ class Homeview:
         self.frame.pack()
 
 
-    def consider_setup(self,column_name):
+    def consider_setup(self,analysiskey):
         """Starts setup if stat analyzer has a dataset to analyze
 
         Args:
-            column_name: name of the column to analyze
+            analysiskey: key of the analysis
 
         """
 
         if self.stat_analyzer.has_dataset():
-            self.show_setup(column_name)
+            self.show_setup(self.analyses[analysiskey])
 
         else:
             err_msg = 'Error: No dataset.\n'

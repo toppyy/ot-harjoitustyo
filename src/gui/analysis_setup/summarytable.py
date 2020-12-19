@@ -70,7 +70,7 @@ class Summarytable(Setup):
             messagebox.showerror(message="Choose which variable to summarise by!")
             return
 
-        analysis_result = self.stat_analyzer.summarytable(self.summarise_by,column_name)
+        analysis_result = self.stat_analyzer.analyse(self.analysis,[self.summarise_by,column_name])
         header = self.summarise_by + '\nvs.\n' + column_name
 
         to_display = [['Value','Count','Mean','Median']] # Headers

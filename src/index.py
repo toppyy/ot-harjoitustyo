@@ -4,11 +4,12 @@ from tkinter import Tk
 from dataset_repository import DatasetRepository
 from misc.db_connection import get_database_connection
 from stat_analyzer import StatAnalyzer
+from analyses_config import get_analyses_config
 from gui.gui import GUI
 
 arguments = sys.argv
 
-stat_analyzer = StatAnalyzer(None)
+stat_analyzer = StatAnalyzer(dataset=None,analyses = get_analyses_config() )
 dataset_repository = DatasetRepository(get_database_connection())
 
 window = Tk()

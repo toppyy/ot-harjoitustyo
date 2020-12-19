@@ -71,7 +71,8 @@ class Varianceanalysis(Setup):
             messagebox.showerror(message="Choose which variable to group by!")
             return
 
-        analysis_result = self.stat_analyzer.varianceanalysis(self.group_by,column_name)
+        analysis_result = self.stat_analyzer.analyse(self.analysis,[self.group_by,column_name])
+
         header = self.group_by + '\nvs.\n' + column_name
 
 

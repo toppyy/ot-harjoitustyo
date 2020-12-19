@@ -73,14 +73,15 @@ class GUI:
     def ask_are_you_sure(self,question):
         return messagebox.askokcancel(title="Are you sure",message=question)
 
-    def show_setup(self,analysis_name):
+    def show_setup(self,analysis):
 
-        analysis = self.analyses[analysis_name]
+        setup_function = analysis['setup']
 
-        view = analysis(
+        view = setup_function(
             stat_analyzer=self.stat_analyzer,
             window=self.root,
-            show_error=self.show_error
+            show_error=self.show_error,
+            analysis = analysis
         )
         self.change_view(view)
 

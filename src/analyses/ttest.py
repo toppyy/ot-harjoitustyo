@@ -20,12 +20,12 @@ def ttest(column,population_mean):
 
     data_mean       = mean(data)
     data_var        = variance(data)
-    n               = len(data)
-    standard_err    = sqrt(data_var/n)
-    df              = n - 1
+    observations    = len(data)
+    standard_err    = sqrt(data_var/observations)
+    degrees_of_freedom = observations - 1
 
     t_statistic = ( data_mean - population_mean ) / standard_err
-    p_stat     = t.cdf(t_statistic,df)
+    p_stat     = t.cdf(t_statistic,degrees_of_freedom)
 
     p_value = ( 1 - p_stat ) * 2
 
@@ -37,5 +37,5 @@ def ttest(column,population_mean):
         population_mean,
         t_statistic,
         p_value,
-        df
+        degrees_of_freedom
     ]

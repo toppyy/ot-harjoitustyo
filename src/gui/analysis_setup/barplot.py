@@ -57,4 +57,4 @@ class Barplot(Setup):
             return
 
         col = self.variable_to_plot
-        self.stat_analyzer.barplot(col)
+        self.stat_analyzer.analyse(self.analysis,[col],self.analysis['plotlibrary'])

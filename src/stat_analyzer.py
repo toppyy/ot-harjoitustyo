@@ -1,32 +1,17 @@
-import matplotlib.pyplot as plt
-
-from analyses.summary           import summary
-from analyses.frequencytable    import frequencytable
-from analyses.summarytable      import summarytable
-from analyses.scatterplot       import scatterplot
-from analyses.barplot           import barplot
-from analyses.varianceanalysis  import varianceanalysis
-from analyses.ttest             import ttest
-
-from gui.analysis_setup.summary             import Summary
-from gui.analysis_setup.frequencytable      import Frequencytable
-from gui.analysis_setup.summarytable        import Summarytable
-from gui.analysis_setup.scatterplot         import Scatterplot
-from gui.analysis_setup.barplot             import Barplot
-from gui.analysis_setup.varianceanalysis    import Varianceanalysis
-from gui.analysis_setup.ttest               import Ttest
 
 class StatAnalyzer:
-    """Class for controlling the statistical analysis tasks
+    """Class for executing analysis tasks on data
     """
 
-    def __init__(self, dataset=None):
+    def __init__(self, dataset=None, analyses=None):
         """Constructor for class
 
         Args:
             dataset: An instance of class Dataset
         """
         self.dataset = dataset
+        self.analyses = analyses
+
 
     def set_dataset(self, dataset):
         """Setter for dataset
@@ -36,6 +21,7 @@ class StatAnalyzer:
         """
         self.dataset = dataset
 
+
     def get_available_analyses(self):
         """Lists available analyses and binds them to setup views
 
@@ -43,108 +29,29 @@ class StatAnalyzer:
             dict: Possible analyses
         """
 
-        analyses = {
-            "Summary": Summary,
-            "Frequency table": Frequencytable,
-            "Summary table": Summarytable,
-            "Scatterplot": Scatterplot,
-            "Barplot": Barplot,
-            "Varianceanalysis": Varianceanalysis,
-            "T-test": Ttest
-        }
+        return self.analyses
 
-        return analyses
-
-    def summary(self, column):
-        """Run summary-analysis tasks
+    def analyse(self, analysis, columns, *args):
+        """Run analysis tasks
 
         Args:
-            column: Name of column to analyze
+            analysis
+            columns: list of column_names. The data for these columns is passed forward
+            args: additional arguments to pass to analyse function
 
         Returns:
-            Output of summary-analysis
+            Output of analysis task
         """
-        data = self.dataset.get_column(column)
-        return summary(data)
+        analyse_function = analysis['analyse']
+        data = []
+        for column in columns:
+            data.append(self.dataset.get_column(column))
 
-    def frequencytable(self, column):
-        """Run frequency table-analysis tasks
+        if len(args)>0:
+            return analyse_function(*data,*list(args))
 
-        Args:
-            column: Name of column to analyze
+        return analyse_function(*data)
 
-        Returns:
-            Output of frequency table-analysis
-        """
-        data = self.dataset.get_column(column)
-        return frequencytable(data)
-
-    def barplot(self,column):
-        """Create barplot
-
-        Args:
-            column: Name of column to plot
-
-        Returns:
-            Output of barplot (none)
-        """
-        data = self.dataset.get_column(column)
-        return barplot(data, plt)
-
-    def summarytable(self, column_to_summarise_by,column_to_summarise):
-        """Run summary table-analysis tasks
-
-        Args:
-            column_to_summarise_by: Name of column to group observations by
-            column_to_summarise: Name of column to summarise
-
-        Returns:
-            Output of summary table-analysis
-        """
-        data_summarise_by   = self.dataset.get_column(column_to_summarise_by)
-        data_summarise      = self.dataset.get_column(column_to_summarise)
-        return summarytable(data_summarise_by,data_summarise)
-
-    def varianceanalysis(self, column_to_group_by,column_to_analyse):
-        """Run varianceanalysis task
-
-        Args:
-            column_to_group_by: Name of column to group observations by
-            column_to_analyze: Name of column to analyze
-
-        Returns:
-            Output of summary table-analysis
-        """
-        data_group_by       = self.dataset.get_column(column_to_group_by)
-        data_summarise      = self.dataset.get_column(column_to_analyse)
-        return varianceanalysis(data_group_by,data_summarise)
-
-
-    def ttest(self, column_to_analyse, population_mean):
-        """Run t-test
-
-        Args:
-            column_to_analyse: column to test
-            population_mean: population mean to test against
-        """
-
-        data = self.dataset.get_column(column_to_analyse)
-        return ttest(data,population_mean)
-
-
-    def scatterplot(self, column_name_a, column_name_b):
-        """Create scatterplot
-
-        Args:
-            column: Name of column to plot
-
-        Returns:
-            Output of scatterplot (none)
-        """
-        column_a   = self.dataset.get_column(column_name_a)
-        column_b    = self.dataset.get_column(column_name_b)
-
-        return scatterplot(column_a,column_b,plt)
 
     def get_column_names(self):
         """Getter for column names of associated dataset
