@@ -1,7 +1,7 @@
 
 # Timesheet
 
-Total hours spent **34**
+Total hours spent **35**
 
 | date | hours spent | doing what  |
 | :----:|:-----| :-----|
@@ -23,4 +23,4 @@ Total hours spent **34**
 | 9.12  | 2    | Plot test, freq.table warns |
 | 13.12 | 2    | Single window for home and setup views |
 | 14.12 | 2    | Separate gui from app logic, ANOVA |
-| 18.12 | 3    | ANOVA p-value and test + t-test |
+| 18.12 | 4    | ANOVA p-value and test + t-test |
