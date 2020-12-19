@@ -14,6 +14,13 @@ class GUI:
         self.analyses = self.stat_analyzer.get_available_analyses()
         self.current_view = None
 
+        self.data_input =  DataInput(
+            set_dataset=self.stat_analyzer.set_dataset,
+            gui=self,
+            callback=self.store_dataset_and_refresh_menu
+        )
+
+
     def start(self):
         self.construct_menu()
         self.show_home()
@@ -44,22 +51,30 @@ class GUI:
 
         for dataset in datasets:
             params = dataset['parameters']
-            submenu.add_command(label=params['filename'])
+            submenu.add_command(
+                label=params['filename']
+                ,command= lambda params=params: self.load_dataset_from_params(params)
+            )
 
         filemenu.add_cascade(label='Recent datasets..', menu=submenu, underline=0)
+
+    def load_dataset_from_params(self,params):
+
+        self.data_input.read_data(
+            params['fullpath'],
+            params['delimiter'],
+            params['has_header'],
+            params['row_limit']
+        )
+        self.show_home()
 
     def store_dataset_and_refresh_menu(self,parameters):
         self.dataset_repository.store_dataset_parameters(parameters)
         self.construct_menu()
 
     def open_datainput(self):
-
-        DataInput(
-            set_dataset=self.stat_analyzer.set_dataset,
-            gui=self,
-            callback=self.store_dataset_and_refresh_menu
-        )
-
+        self.data_input.init()
+        
     def load_exampledata(self):
         self.stat_analyzer.set_dataset(load_exampledata(gui=self))
 

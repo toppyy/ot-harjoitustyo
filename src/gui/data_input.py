@@ -16,8 +16,8 @@ class DataInput:
             callback: function that is with the parameters for reading data
         """
 
-        self.path = filedialog.askopenfilename()
-        self.window = Tk()
+        self.path = None
+        self.window = None
         self.has_header = BooleanVar(self.window)
         self.has_header.set(True) # Default
 
@@ -28,13 +28,14 @@ class DataInput:
 
         self.gui = gui
 
-        self.init()
+
 
 
     def init(self):
         """Initialize the view
         """
-
+        self.window = Tk()
+        self.path = filedialog.askopenfilename()
 
         self.window.title("Data input")
 
@@ -65,7 +66,8 @@ class DataInput:
 
         # Load
 
-        load_btn = ttk.Button(options ,text='Load dataset', command = self.read_data)
+
+        load_btn = ttk.Button(options ,text='Load dataset', command = self.load_data)
         load_btn.grid(row=2,column=0)
 
         # Pack
@@ -73,17 +75,21 @@ class DataInput:
         self.window.mainloop()
 
 
-    def read_data(self,row_limit=None ):
-        """Reads a dataset
-
-        Args:
-            row_limit: The number of rows to read from the data. All are read if None (default)
-        """
+    def load_data(self):
 
         path = self.path
         delimiter = self.delimiter.get()
         has_header = self.has_header.get()
 
+        self.read_data(path,delimiter,has_header)
+        self.window.destroy()
+
+    def read_data(self,path,delimiter,has_header,row_limit=None ):
+        """Reads a dataset
+
+        Args:
+            row_limit: The number of rows to read from the data. All are read if None (default)
+        """
         try:
             data = Dataset(FileAccess().read_csv(path, delimiter, '"', row_limit))
         except Exception as err:
@@ -94,7 +100,7 @@ class DataInput:
 
         self.set_dataset(data)
 
-        filename_match = re.search('[a-z_]+\.csv',path)
+        filename_match = re.search('[a-z_]+\..+',path)
 
         self.callback({
                 'fullpath': path,
@@ -103,4 +109,3 @@ class DataInput:
                 'row_limit': row_limit,
                 'has_header': has_header
             })
-        self.window.destroy()
