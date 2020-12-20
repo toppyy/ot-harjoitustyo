@@ -63,7 +63,7 @@ class GUI:
 
         submenu = Menu(filemenu)
         try:
-            datasets = self.dataset_repository.get_10_recent_datasets()
+            datasets = self.dataset_repository.get_top_n_datasets(10)
         except Exception as err:
             msg = 'Recent datasets could not be loaded. Running build might help.\n'
             msg = msg + '(Err: {})'.format(err)

@@ -42,3 +42,14 @@ class TestDatasetRepository(unittest.TestCase):
 
         dataset_params = self.dataset_repo.get_dataset_parameters(id_of_inserted_row)
         self.assertEqual(filename,dataset_params['filename'])
+
+
+    def test_get_n_from_repository_works(self):
+
+        filename = "/path/to/csv_file.csv"
+        for i in range(0,10):
+            id_insert = self.dataset_repo.store_dataset_parameters({ "filename": filename } )
+
+        datasets = self.dataset_repo.get_top_n_datasets(5)
+
+        self.assertEqual(5,len(datasets))

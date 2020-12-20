@@ -85,8 +85,11 @@ class DatasetRepository:
 
         return parameters
 
-    def get_10_recent_datasets(self):
-        """Returns ten most recent dataset parameters
+    def get_top_n_datasets(self,number_of_datasets):
+        """Returns n most recent dataset parameters
+
+        Args:
+            number_of_datasets to get from db
 
         Returns:
             A list of dataset parameters
@@ -94,7 +97,8 @@ class DatasetRepository:
         cursor = self.dbcon.cursor()
 
         parameters = []
-        for row in cursor.execute('SELECT * FROM datasets ORDER BY id DESC LIMIT 10;'):
+        stmt = 'SELECT * FROM datasets ORDER BY id DESC LIMIT ?'
+        for row in cursor.execute(stmt,(number_of_datasets,)):
 
             parameter = {
                 "id": row[0],
