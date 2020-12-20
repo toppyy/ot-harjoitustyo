@@ -10,6 +10,14 @@ dirname = dirname.parent
 
 
 def get_database_connection(filename='datasets.sqlite'):
+    """Establishes a database connection
+
+    Args:
+        filename: Name of the database file. Defaults to 'datasets.sqlite'.
+
+    Returns:
+        DB-connection.
+    """
     dbfilename  = os.path.join(dirname, "data", filename)
     if filename == ":memory:":
         dbfilename = filename

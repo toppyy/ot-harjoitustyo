@@ -1,7 +1,15 @@
 import re
 
 
-def guesstype(datapart,):
+def guesstype(datapart):
+    """Guesses datatype from data
+
+    Args:
+        datapart: A list of data
+
+    Returns:
+        A string describing the data type
+    """
 
     obs = datapart[0]  # Guess from one obs
 

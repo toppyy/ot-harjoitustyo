@@ -14,17 +14,6 @@ class Ttest(Setup):
         Setup.__init__(self,**kwargs)
 
 
-
-    def set_population_mean(self,mean):
-        """Setter for population mean (to compare sample against)
-
-        Args:
-            mean: population mean
-        """
-        self.group_by = column_name
-
-
-
     def initialize(self):
         """Creates the elements for this setup
         """
@@ -39,8 +28,6 @@ class Ttest(Setup):
         self.pop_mean_entry = Entry(master=self.frame)
         self.pop_mean_entry.grid(row=objects,column=0)
         objects = objects + 1
-
-        print(self.pop_mean_entry.get())
 
         # which variable to analyze variance
 

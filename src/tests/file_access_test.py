@@ -1,5 +1,5 @@
 import unittest
-from file_access import FileAccess
+from file_access import read_csv
 
 
 class TestFileAccess(unittest.TestCase):
@@ -7,7 +7,7 @@ class TestFileAccess(unittest.TestCase):
     def test_csv_read(self):
 
         path = './data/iris.csv'
-        rows = FileAccess().read_csv(path, ";", '"')
+        rows = read_csv(path, ";", '"')
 
         first_row = 'Sepal.Length;Sepal.Width;Petal.Length;Petal.Width;Species'
 
@@ -18,6 +18,6 @@ class TestFileAccess(unittest.TestCase):
         rows_to_read = 12
 
         path = './data/iris.csv'
-        rows = FileAccess().read_csv(path, ";", '"', row_limit=12)
+        rows = read_csv(path, ";", '"', row_limit=12)
 
         self.assertEqual(rows_to_read, len(rows))

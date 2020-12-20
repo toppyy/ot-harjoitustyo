@@ -6,8 +6,13 @@ class Table:
     def __init__(self,data):
         self.data = data
 
-    def get_output(self,master_to_be,row_idx):
+    def create_output(self,master_to_be,row_idx):
+        """Creates a table from widgets
 
+        Args:
+            master_to_be: Master to bind element to
+            row_idx: Index of row to bind element to
+        """
         col_idx = -1
 
         columns = len(self.data[0])
@@ -28,4 +33,9 @@ class Table:
         return cells
 
     def number_of_elements_to_render(self):
+        """Getter for number of cells in the table
+
+        Returns:
+            Number of cells in the table
+        """
         return len(self.data)

@@ -1,5 +1,14 @@
 
 def convert_to(data, coltype):
+    """Datatype conversion for lists
+
+    Args:
+        data: List of data to be converted
+        coltype: Target datatype. Either int or float
+
+    Returns:
+        List. Converted data.
+    """
 
 
     if coltype == 'int':

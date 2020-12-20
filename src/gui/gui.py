@@ -7,6 +7,13 @@ from gui.homeview           import Homeview
 class GUI:
 
     def __init__(self,window, stat_analyzer, dataset_repository):
+        """Initialises the GUI
+
+        Args:
+            window: Root windows
+            stat_analyzer: An instance of StatAnalyzer
+            dataset_repository: An instance os DatasetRepository
+        """
         self.root = window
         self.stat_analyzer = stat_analyzer
         self.dataset_repository = dataset_repository
@@ -22,11 +29,15 @@ class GUI:
 
 
     def start(self):
+        """Construct menu, create home-view and run the mainloop
+        """
         self.construct_menu()
         self.show_home()
         self.root.mainloop()
 
     def construct_menu(self):
+        """Constructs the menu for gui
+        """
         menu = Menu(self.root)
         self.root.config(menu=menu)
         filemenu = Menu(menu)
@@ -44,12 +55,18 @@ class GUI:
         filemenu.add_command(label='Exit', command=self.root.quit)
 
     def add_recent_datasets_to_menu(self,filemenu):
+        """Display recent datasets in the menu
+
+        Args:
+            filemenu: Menu to add submenu to
+        """
 
         submenu = Menu(filemenu)
         try:
             datasets = self.dataset_repository.get_10_recent_datasets()
         except Exception as err:
-            msg = 'Recent datasets could not be loaded. Running build might help. (Err: {})'.format(err)
+            msg = 'Recent datasets could not be loaded. Running build might help.\n'
+            msg = msg + '(Err: {})'.format(err)
             self.show_error(msg)
             return
 
@@ -63,6 +80,11 @@ class GUI:
         filemenu.add_cascade(label='Recent datasets..', menu=submenu, underline=0)
 
     def load_dataset_from_params(self,params):
+        """Loads a dataset from parameters (from dataset repository)
+
+        Args:
+            params: Parameters for reading the dataset
+        """
 
         self.data_input.read_data(
             params['fullpath'],
@@ -73,6 +95,11 @@ class GUI:
         self.show_home()
 
     def store_dataset_and_refresh_menu(self,parameters):
+        """Stores a dataset to repository and re-creates the menu
+
+        Args:
+            parameters to store to repository
+        """
         try:
             self.dataset_repository.store_dataset_parameters(parameters)
             self.construct_menu()
@@ -81,11 +108,11 @@ class GUI:
             self.show_error(msg)
             return
 
-    def open_datainput(self):
-        self.data_input.init()
 
     def load_exampledata(self):
-        self.stat_analyzer.set_dataset(load_exampledata(gui=self))
+        """Loads the example data to StatAnalyzer
+        """
+        self.stat_analyzer.set_dataset(load_exampledata())
 
     def show_warning(self,warningmsg):
         messagebox.showwarning(message=warningmsg)
@@ -96,7 +123,19 @@ class GUI:
     def ask_are_you_sure(self,question):
         return messagebox.askokcancel(title="Are you sure",message=question)
 
+
+
+    def open_datainput(self):
+        """Opens the data input window
+        """
+        self.data_input.init()
+
     def show_setup(self,analysis):
+        """Shows an instance of Setup-view
+
+        Args:
+            analysis: key of the analysis for which to open setup for
+        """
 
         setup_function = analysis['setup']
 
@@ -109,12 +148,19 @@ class GUI:
         self.change_view(view)
 
     def change_view(self,new_view):
+        """Hides the current view and displays the new view
+
+        Args:
+            new_view: The new view to display
+        """
 
         self.hide_current_view()
         self.current_view = new_view
         self.current_view.pack()
 
     def show_home(self):
+        """Displays home-view
+        """
 
         view = Homeview(
             self.root,
@@ -127,6 +173,8 @@ class GUI:
 
 
     def hide_current_view(self):
+        """Hides the current view (destroys it)
+        """
         if self.current_view:
             self.current_view.destroy()
 

@@ -18,6 +18,11 @@ from gui.analysis_setup.ttest               import Ttest
 
 
 def get_analyses_config():
+    """Function to act as a central repository for analysis tasks
+
+    Returns:
+        A dictionary consisting of analysis tasks.
+    """
 
     analyses  = {
         'summary':    {

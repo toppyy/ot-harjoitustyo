@@ -1,5 +1,10 @@
 
 def drop_tables(connection):
+    """Drop tables in database
+
+    Args:
+        connection: db-connection
+    """
     cursor = connection.cursor()
 
     cursor.execute('''
@@ -10,6 +15,11 @@ def drop_tables(connection):
 
 
 def create_tables(connection):
+    """Creates tables in database
+
+    Args:
+        connection: db-connection
+    """
     cursor = connection.cursor()
 
     cursor.execute('''
@@ -23,6 +33,11 @@ def create_tables(connection):
 
 
 def initialize_database(connection):
+    """Inits the database by dropping and creating relevant tables
+
+    Args:
+        connection: db-connection
+    """
 
     drop_tables(connection)
     create_tables(connection)

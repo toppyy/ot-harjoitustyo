@@ -1,6 +1,6 @@
 import re
 from tkinter import ttk, Tk, filedialog, Radiobutton, BooleanVar
-from file_access import FileAccess
+from file_access import read_csv
 from dataset import Dataset
 
 class DataInput:
@@ -76,6 +76,8 @@ class DataInput:
 
 
     def load_data(self):
+        """Loads the data and closes the window
+        """
 
         path = self.path
         delimiter = self.delimiter.get()
@@ -91,12 +93,18 @@ class DataInput:
             row_limit: The number of rows to read from the data. All are read if None (default)
         """
         try:
-            data = Dataset(FileAccess().read_csv(path, delimiter, '"', row_limit))
+            data = Dataset(read_csv(path, delimiter, '"', row_limit))
         except Exception as err:
             self.gui.show_warning(str(err))
             return
 
-        data.create(has_header=has_header)
+        try:
+            data.create(has_header=has_header)
+        except Exception as err:
+            msg = 'Error loading the dataset. Data was not loaded.'
+            msg = msg+'\n({})'.format(str(err))
+            self.gui.show_warning(msg)
+            return
 
         self.set_dataset(data)
 

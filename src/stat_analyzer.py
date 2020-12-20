@@ -1,6 +1,10 @@
 
 class StatAnalyzer:
     """Class for executing analysis tasks on data
+
+        Attributes:
+            self.dataset: an instance of Dataset
+            self.analyses: A dictionary of analysis tasks available
     """
 
     def __init__(self, dataset=None, analyses=None):

@@ -23,22 +23,7 @@ class Dataset:
         self.column_types = []
 
 
-    def create_column_names(self,has_header):
-        """List column names by either generating them or taking them from the data
-
-        Args:
-            has_header (bool): True, if the dataset has a header row
-
-        Returns:
-            list: list of column names
-        """
-
-        column_names = ['col'+str(idx)
-                             for idx in range(0, len(self.rows[0]))]
-        if has_header:
-            column_names = self.rows.pop(0)
-
-        return column_names
+    
 
     def create(self, has_header=True):
         """ Stores the data as columns instead of rows and stores column names
@@ -72,6 +57,24 @@ class Dataset:
 
             self.dataset[column_name] = data_and_coltype["data"]
             self.column_types.append(data_and_coltype["coltype"])
+    
+    def create_column_names(self,has_header):
+        """List column names by either generating them or taking them from the data
+
+        Args:
+            has_header (bool): True, if the dataset has a header row
+
+        Returns:
+            list: list of column names
+        """
+
+        column_names = ['col'+str(idx)
+                             for idx in range(0, len(self.rows[0]))]
+        if has_header:
+            column_names = self.rows.pop(0)
+
+        return column_names
+
 
     def convert_to(self,data,target_type,column_name):
         """Tries to do data conversion

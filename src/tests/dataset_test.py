@@ -1,13 +1,13 @@
 import unittest
 from dataset import Dataset
-from file_access import FileAccess
+from file_access import read_csv
 from test_helpers.pseudo_gui import PseudoGUI
 
 class TestDataset(unittest.TestCase):
 
     def setUp(self):
         path = './data/iris.csv'
-        self.rows = FileAccess().read_csv(path, ";", '"')
+        self.rows = read_csv(path, ";", '"')
         self.dataset = Dataset(  self.rows  )
         self.dataset.gui = PseudoGUI()
 

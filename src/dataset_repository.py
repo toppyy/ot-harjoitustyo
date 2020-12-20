@@ -3,6 +3,9 @@ import json
 
 class DatasetRepository:
     """Access to dataset repository (≃ parameters to open a dataset)
+
+        Attributes:
+        dbcon: dbcon: Connection to database
     """
 
     def __init__(self,dbcon):

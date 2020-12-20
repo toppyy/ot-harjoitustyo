@@ -1,6 +1,14 @@
 
 
 def median(data):
+    """Calculates the median
+
+    Args:
+        data: A list of numbers to calculate median for
+
+    Returns:
+        Median
+    """
     data = sorted(data)
 
     midpoint = len(data) // 2
