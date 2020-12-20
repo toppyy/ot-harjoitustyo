@@ -2,24 +2,8 @@ from scipy.stats import f
 from analyses.summarytable  import summarytable
 from math_helper.mean       import mean
 
-def varianceanalysis(column_to_group_by,column_to_analyse):
-    """Analysis of variance
 
-    Args:
-        column_to_group_by: the column describing groups to compare
-        column_to_analyse: column for the data to use in comparison
-
-    Returns:
-        A list of test statistics
-    """
-
-
-    group_by_data = column_to_group_by['data']
-    analyse_data  = column_to_analyse['data']
-
-    summary_by_group = summarytable(column_to_group_by,column_to_analyse)
-
-    total_mean  = mean(analyse_data)
+def calculate_squares_between_groups(summary_by_group,total_mean):
 
     between_groups = []
     for group in summary_by_group:
@@ -30,6 +14,14 @@ def varianceanalysis(column_to_group_by,column_to_analyse):
 
     dfn = ( len(summary_by_group)-1 )
     ms_between = ss_between_groups / dfn
+
+    return (
+        ss_between_groups,
+        ms_between,
+        dfn
+    )
+
+def calculate_squares_within_groups(group_by_data,analyse_data,summary_by_group):
 
     # terrible, but will do for now
     groups = {}
@@ -50,6 +42,45 @@ def varianceanalysis(column_to_group_by,column_to_analyse):
 
     dfd = ( len(analyse_data) - len(summary_by_group) )
     ms_within = ss_within / dfd
+
+    return (
+        ss_within,
+        ms_within,
+        dfd
+    )
+
+
+def varianceanalysis(column_to_group_by,column_to_analyse):
+    """Analysis of variance
+
+    Args:
+        column_to_group_by: the column describing groups to compare
+        column_to_analyse: column for the data to use in comparison
+
+    Returns:
+        A list of test statistics
+    """
+
+
+    group_by_data = column_to_group_by['data']
+    analyse_data  = column_to_analyse['data']
+
+    summary_by_group = summarytable(column_to_group_by,column_to_analyse)
+
+    total_mean  = mean(analyse_data)
+
+    between_groups = calculate_squares_between_groups(summary_by_group,total_mean)
+
+    within_groups = calculate_squares_within_groups(group_by_data,analyse_data,summary_by_group)
+
+
+    ss_between_groups   = between_groups[0]
+    ms_between          = between_groups[1]
+    dfn                 = between_groups[2]
+
+    ss_within   = within_groups[0]
+    ms_within   = within_groups[1]
+    dfd         = within_groups[2]
 
     f_statistic = ms_between/ms_within
 
