@@ -19,7 +19,11 @@ Project structure:
     - **/misc**
         - Miscellanious helper functions
     - **/tests**
-        - Tests for the project
+        - Tests for main classes
+        - **/analysis_tests**
+            - Tests for analysis-related functions
+        - **/misc_tests**
+            - Tests for misc functions
     - **/test_helpers**
         - Helpers for tests
 

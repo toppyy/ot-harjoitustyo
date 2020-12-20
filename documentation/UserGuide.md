@@ -5,6 +5,7 @@
 Run:
 ```bash
 python3 -m pipenv install
+python3 -m pipenv run build
 python3 -m pipenv run start
 ```
 
@@ -26,13 +27,13 @@ python3 -m pipenv run start
 
 ## 3. Choose which analysis task you want to perform
 
-1. Choose one of the tasks by clicking one of the buttons (eg. Frequency table)
+1. Choose one of the tasks by clicking one of the buttons. Let's choose ANOVA.
 
-2. A setup view opens:
+2. A setup view opens. In this example, we'll be using the example dataset, so the setup looks like this:
 
 ![analysis_setup](analysis_setup.png)
 
-3. We'll choose "maakunta" by clicking it. This will do a frequency table of the variable "maakunta" and display the results:
+3. We want to test whether sepal length differs between species, so we'll choose "Species" and Sepal.Length. By clicking Sepal.Lenght, the analysis is done and the following statistics are displayed:
 
 ![output](output.png)
 

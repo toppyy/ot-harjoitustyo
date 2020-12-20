@@ -1,7 +1,7 @@
 
 # Timesheet
 
-Total hours spent **37**
+Total hours spent **39**
 
 | date | hours spent | doing what  |
 | :----:|:-----| :-----|
@@ -25,3 +25,4 @@ Total hours spent **37**
 | 14.12 | 2    | Separate gui from app logic, ANOVA |
 | 18.12 | 4    | ANOVA p-value and test + t-test |
 | 19.12 | 5    | Dataset-repository with sqlite3, documentation update, refactor |
+| 20.12 | 3    | Document updates, test refactor and misc. fixes |
