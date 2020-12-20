@@ -30,7 +30,7 @@ def get_analyses_config():
             'setup': Summary,
             'analyse': summary
         },
-        'freqtable':  { 
+        'freqtable':  {
             'displayname': 'Frequency table',
             'setup': Frequencytable,
             'analyse': frequencytable
@@ -57,7 +57,7 @@ def get_analyses_config():
             'setup': Varianceanalysis,
             'analyse': varianceanalysis
         },
-        'ttest':  { 
+        'ttest':  {
             'displayname': 'T-test',
             'setup': Ttest,
             'analyse': ttest

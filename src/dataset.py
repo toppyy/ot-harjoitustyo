@@ -22,9 +22,6 @@ class Dataset:
         self.column_names = None
         self.column_types = []
 
-
-    
-
     def create(self, has_header=True):
         """ Stores the data as columns instead of rows and stores column names
             Data is stored in a dict. The key is the column name.
@@ -57,7 +54,7 @@ class Dataset:
 
             self.dataset[column_name] = data_and_coltype["data"]
             self.column_types.append(data_and_coltype["coltype"])
-    
+
     def create_column_names(self,has_header):
         """List column names by either generating them or taking them from the data
 
@@ -89,25 +86,21 @@ class Dataset:
         """
 
         try:
-
-            data = convert_to(data,target_type)
-            result_type = target_type
-
-        except ValueError as err:
+            return {
+                "data": convert_to(data,target_type),
+                "coltype": target_type
+            }
+        except ValueError:
 
             error_msg = 'Error converting column {} to {}'.format(column_name,target_type)
             error_msg = error_msg + '\nReturning column as str.'
 
-            result_type='str'
             print(error_msg)
-
-        finally:
 
             return {
                 "data": data,
-                "coltype": result_type
+                "coltype": 'str'
             }
-
 
 
     def get_column(self, column_name):
