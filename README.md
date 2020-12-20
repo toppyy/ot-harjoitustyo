@@ -4,6 +4,7 @@ The application provides an access to simple statistical analysis for text files
 
 ## Releases
 
+* [Final](./releases/tag/final)
 * [Week 6](./releases/tag/week6)
 * [Week 5](./releases/viikko5)
 
