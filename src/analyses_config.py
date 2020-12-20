@@ -7,6 +7,7 @@ from analyses.scatterplot       import scatterplot
 from analyses.barplot           import barplot
 from analyses.varianceanalysis  import varianceanalysis
 from analyses.ttest             import ttest
+from analyses.linear_regression import linear_regression
 
 from gui.analysis_setup.summary             import Summary
 from gui.analysis_setup.frequencytable      import Frequencytable
@@ -15,7 +16,7 @@ from gui.analysis_setup.scatterplot         import Scatterplot
 from gui.analysis_setup.barplot             import Barplot
 from gui.analysis_setup.varianceanalysis    import Varianceanalysis
 from gui.analysis_setup.ttest               import Ttest
-
+from gui.analysis_setup.linear_regression   import LinearRegression
 
 def get_analyses_config():
     """Function to act as a central repository for analysis tasks
@@ -61,6 +62,11 @@ def get_analyses_config():
             'displayname': 'T-test',
             'setup': Ttest,
             'analyse': ttest
+        },
+        'linearregression': {
+            'displayname': 'Linear regression',
+            'setup': LinearRegression,
+            'analyse': linear_regression
         }
     }
     return analyses
