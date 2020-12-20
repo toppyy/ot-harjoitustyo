@@ -8,6 +8,7 @@ Only application logic is tested automatically. The ui has no tests and it was t
 
 Notes regarding unit and integration tests:
 - The analysis functions and main classes are tested with unit tests. 
+- Integration is through injection in StatAnalyzer
 - Functions that create plots are tested by injecting a fake reference to the library that creates the plot. The tests test that the plotting function is called with the correct arguments. The plotting itself is assumed to work.
 - Tests for classes `FileAccess` and `DataSet` depend on `./data/iris.csv`.
 
